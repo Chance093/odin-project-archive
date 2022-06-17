@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(222, 246, 250);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
