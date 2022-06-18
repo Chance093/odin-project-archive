@@ -11,14 +11,6 @@ body {
     color: white;
 }
 
-button {
-    background-color: #3882f6;
-    color: white;
-    width: 120px;
-    height: 30px;
-    border: none;
-    border-radius: 10px;
-}
 
 /* HEADER SECTION */
 .header {
@@ -59,6 +51,15 @@ a {
     color: white;
 }
 
+button {
+    background-color: #3882f6;
+    color: white;
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
 .hero {
     display: flex;
     gap: 20px;
@@ -83,10 +84,16 @@ a {
     padding: 20px 50px;
 }
 
+.content h3 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1f2937;
+}
+
 .content img {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
 }
 
 .img-content {
@@ -96,7 +103,7 @@ a {
 }
 
 .img-content div {
-    width: 150px;
+    width: 200px;
 }
 
 /* QUOTE SECTION */
