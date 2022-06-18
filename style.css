@@ -10,6 +10,7 @@ body {
     color: white;
 }
 
+/* HEADER SECTION */
 .header {
     display: flex;
     flex-direction: column;
@@ -46,6 +47,29 @@ a {
     width: 400px;
     height: 200px;
     background-color: gray;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+.content img {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+}
+
+.img-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.img-content div {
+    width: 150px;
 }
 
 .quote {
