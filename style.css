@@ -25,9 +25,25 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 1000px;
+}
 
-    /* align-items: center; */
-    /* padding: 0px 100px 50px 100px; */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    margin-bottom: 5em;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 7em;
+}
+
+.hero img {
+    width: 400px;
+    border-radius: 10px;
 }
 
 .description {
@@ -45,14 +61,6 @@ body {
 li {
     font-size: 18px;
     color: #e5e7eb;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1000px;
-    margin-bottom: 5em;
 }
 
 ul {
@@ -75,40 +83,19 @@ button {
     border-radius: 10px;
 }
 
-.hero {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    gap: 7em;
-}
-
-.hero div {
-    flex: 1;
-}
-
-.hero img {
-    width: 400px;
-    height: auto;
-    border-radius: 10px;
-}
-
 /* CONTENT SECTION */
 .content {
-    display: flex;
-    flex-direction: column;
     text-align: center;
     padding: 20px 50px;
 }
 
 .content h3 {
     font-size: 36px;
-    font-weight: bold;
     color: #1f2937;
 }
 
 .content img {
     width: 200px;
-    height: 200px;
     border-radius: 10px;
 }
 
@@ -118,25 +105,17 @@ button {
     gap: 20px;
 }
 
-.img-content div {
-    width: 200px;
-}
-
 /* QUOTE SECTION */
 .quote-section {
     background-color: #e5e7eb;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
     font-size: 36px;
     padding: 3em 0;
 }
 
 .quote-section p {
-    font-weight: 300;
     font-style: italic;
-    margin-bottom: 1em;
 }
 
 .quote-section .author {
