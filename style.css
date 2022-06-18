@@ -18,10 +18,25 @@ body {
     padding: 0px 100px 50px 100px;
 }
 
+.description h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #f9faf8;
+    margin: 0;
+}
+
+.description p,
+li {
+    font-size: 18px;
+    color: #e5e7eb;
+}
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10em;
 }
 
 ul {
@@ -38,6 +53,7 @@ a {
 .hero {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .hero div {
