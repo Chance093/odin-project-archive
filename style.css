@@ -136,13 +136,29 @@ button {
 
 /* CTA SECTION */
 
+.cta-section {
+    display: flex;
+    justify-content: center;
+}
+
 .cta {
     background-color: #3882f6;
     color: white;
-    margin: 3em 6em;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    margin: 5em 0em;
+    padding: 3em 8em;
+    border-radius: 10px;
+    gap: 8em;
+}
+
+.cta div p,
+.cta div h3 {
+    margin: 0;
+}
+
+.cta div p {
+    margin-top: 10px;
 }
 
 .cta button {
