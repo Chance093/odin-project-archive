@@ -10,6 +10,44 @@ body {
     color: white;
 }
 
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px 50px 100px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero {
+    display: flex;
+    gap: 20px;
+}
+
+.hero div {
+    flex: 1;
+}
+
+.hero-image {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+}
+
 .quote {
     background-color: #e5e7eb;
 }
