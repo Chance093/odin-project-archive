@@ -5,7 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.header,
+.mainheader,
 .footer {
     background-color: #1f2937;
     color: white;
@@ -13,10 +13,25 @@ body {
 
 
 /* HEADER SECTION */
+
+.mainheader {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7em;
+}
+
 .header {
     display: flex;
     flex-direction: column;
-    padding: 0px 100px 50px 100px;
+    align-items: center;
+    max-width: 1000px;
+
+    /* align-items: center; */
+    /* padding: 0px 100px 50px 100px; */
+}
+
+.description {
+    width: 500px;
 }
 
 .description h2 {
@@ -32,17 +47,17 @@ li {
     color: #e5e7eb;
 }
 
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10em;
+    width: 1000px;
+    margin-bottom: 5em;
 }
 
 ul {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     list-style: none;
 }
 
@@ -64,16 +79,17 @@ button {
     display: flex;
     gap: 20px;
     align-items: center;
+    gap: 7em;
 }
 
 .hero div {
     flex: 1;
 }
 
-.hero-image {
+.hero img {
     width: 400px;
-    height: 200px;
-    background-color: gray;
+    height: auto;
+    border-radius: 10px;
 }
 
 /* CONTENT SECTION */
