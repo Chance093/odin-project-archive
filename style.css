@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.header,
+.footer {
+    background-color: #1f2937;
+    color: white;
+}
+
+.quote {
+    background-color: #e5e7eb;
+}
+
+.cta {
+    background-color: #3882f6;
+}
