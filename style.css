@@ -11,6 +11,15 @@ body {
     color: white;
 }
 
+button {
+    background-color: #3882f6;
+    color: white;
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
 /* HEADER SECTION */
 .header {
     display: flex;
@@ -114,8 +123,7 @@ a {
 }
 
 .cta button {
-    width: 75px;
-    height: 35px;
+    border: 2px solid white;
 }
 
 /* FOOTER SECTION */
