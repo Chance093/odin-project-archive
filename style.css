@@ -107,15 +107,31 @@ button {
 }
 
 /* QUOTE SECTION */
-.quote {
+.quote-section {
     background-color: #e5e7eb;
     display: flex;
     flex-direction: column;
-    padding: 2em 15em;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    padding: 3em 0;
 }
 
-.author {
-    margin-left: auto;
+.quote-section p {
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.quote-section .author {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.quote-section .author span {
+    font-style: italic;
 }
 
 /* CTA SECTION */
