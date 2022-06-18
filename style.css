@@ -100,3 +100,9 @@ a {
     width: 75px;
     height: 35px;
 }
+
+/* FOOTER SECTION */
+.footer {
+    padding: 2em;
+    text-align: center;
+}
