@@ -49,6 +49,7 @@ a {
     background-color: gray;
 }
 
+/* CONTENT SECTION */
 .content {
     display: flex;
     flex-direction: column;
@@ -72,9 +73,19 @@ a {
     width: 150px;
 }
 
+/* QUOTE SECTION */
 .quote {
     background-color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 15em;
 }
+
+.author {
+    margin-left: auto;
+}
+
+
 
 .cta {
     background-color: #3882f6;
