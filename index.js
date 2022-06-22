@@ -1,26 +1,3 @@
-// ASK USER ROCK PAPER SCISSORS
-// SET USER INPUT EQUAL TO VARIABLE
-
-
-
-// COMPUTER GIVES US RANDOM INPUT
-// USE MATH.RANDOM TO GET NUMBER 1-3
-// SET NUMBER EQUAL TO ROCK PAPER OR SCISSORS
-// RETURN STRING
-
-
-// SEE WHICH ONE WINS
-
-// IF USER IS ROCK, HE BEATS SCISSORS BUT LOSES TO PAPER
-
-// IF USER IS PAPER, HE BEATS ROCK BUT LOSES TO SCISSORS
-
-// IF USER IS SCISSORS, HE BEATS PAPER BUT LOSES TO ROCK
-
-// OUTPUT WINNER
-
-// PLAY BEST TO 5
-
 const computerSelection = () => { // GETS COMPUTER INPUT
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     switch (randomNumber) {
@@ -44,7 +21,7 @@ const playerSelection = () => { // GETS USER INPUT
     return playerSelection;
 }
 
-function playGame(user, computer) { // PLAYS A SINGLE GAME, USER VS COMPUTER
+function playGame(user, computer) { // PLAYS A SINGLE ROUND, USER VS COMPUTER
     if (user === 'rock') {
         if (computer === 'scissors') {
             return 'YOU WIN! ROCK BEATS SCISSORS!';
@@ -72,19 +49,19 @@ function playGame(user, computer) { // PLAYS A SINGLE GAME, USER VS COMPUTER
     }
 }
 
-// PLAY A BEST OF 3 GAME
-// AFTER EVERY GAME, DISPLAY THE WINNER, ADD SCORE TO WHOEVER WON, DISPLAY SCORES
-// CHECK TO SEE IF SOMEONE HAS REACHED THREE
-// IF THEY HAVE, DECLARE THEM THE WINNER
-// IF NOT, PLAY ANOTHER GAME
-
-function game() {
+function game() { // PLAYS A BEST OF 5 GAME
     let userTotalScore = 0;
     let computerTotalScore = 0;
-    for (let i = 0; i < 5; i++) {
+    while (userTotalScore < 3 && computerTotalScore < 3) {
         let playRound = playGame(playerSelection(), computerSelection());
         if (playRound === 'YOU WIN! ROCK BEATS SCISSORS!' || playRound === 'YOU WIN! PAPER BEATS ROCK!' || playRound === 'YOU WIN! SCISSORS BEATS PAPER!') {
-
+            userTotalScore++;
+            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
+        } else if (playRound === 'YOU LOSE! PAPER BEATS ROCK!' || playRound === 'YOU LOSE! SCISSORS BEATS PAPER!' || playRound === 'YOU LOSE! ROCK BEATS SCISSORS!') {
+            computerTotalScore++;
+            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
+        } else {
+            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
         }
     }
 }
