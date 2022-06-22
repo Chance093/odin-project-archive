@@ -21,7 +21,7 @@
 
 // PLAY BEST TO 5
 
-function computerPlay() {
+const computerSelection = () => { // GETS COMPUTER INPUT
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     switch (randomNumber) {
         case 1:
@@ -36,8 +36,17 @@ function computerPlay() {
     }
 }
 
-const playerSelection = prompt('Rock... Paper... Scissors... SHOOT!').toLowerCase();
-const computerSelection = computerPlay();
+const playerSelection = () => { // GETS USER INPUT
+    let playerSelection = prompt('Rock... Paper... Scissors... SHOOT!').toLowerCase();
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        playerSelection = prompt('Try Again! Rock... Paper... Scissors... SHOOT!').toLowerCase();
+    }
+    return playerSelection;
+}
+
+// SETS VARIABLES FOR BOTH FUNCTIONS ABOVE
+// const playerSelection = userPlay();
+// const computerSelection = computerPlay();
 
 function playGame(user, computer) {
     if (user === 'rock') {
@@ -66,5 +75,5 @@ function playGame(user, computer) {
         }
     }
 }
-console.log(playGame(playerSelection, computerSelection))
+console.log(playGame(playerSelection(), computerSelection()))
 
