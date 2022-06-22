@@ -44,11 +44,7 @@ const playerSelection = () => { // GETS USER INPUT
     return playerSelection;
 }
 
-// SETS VARIABLES FOR BOTH FUNCTIONS ABOVE
-// const playerSelection = userPlay();
-// const computerSelection = computerPlay();
-
-function playGame(user, computer) {
+function playGame(user, computer) { // PLAYS A SINGLE GAME, USER VS COMPUTER
     if (user === 'rock') {
         if (computer === 'scissors') {
             return 'YOU WIN! ROCK BEATS SCISSORS!';
@@ -75,5 +71,22 @@ function playGame(user, computer) {
         }
     }
 }
-console.log(playGame(playerSelection(), computerSelection()))
+
+// PLAY A BEST OF 3 GAME
+// AFTER EVERY GAME, DISPLAY THE WINNER, ADD SCORE TO WHOEVER WON, DISPLAY SCORES
+// CHECK TO SEE IF SOMEONE HAS REACHED THREE
+// IF THEY HAVE, DECLARE THEM THE WINNER
+// IF NOT, PLAY ANOTHER GAME
+
+function game() {
+    let userTotalScore = 0;
+    let computerTotalScore = 0;
+    for (let i = 0; i < 5; i++) {
+        let playRound = playGame(playerSelection(), computerSelection());
+        if (playRound === 'YOU WIN! ROCK BEATS SCISSORS!' || playRound === 'YOU WIN! PAPER BEATS ROCK!' || playRound === 'YOU WIN! SCISSORS BEATS PAPER!') {
+
+        }
+    }
+}
+game();
 
