@@ -1,4 +1,4 @@
-const computerSelection = () => { // GETS COMPUTER INPUT
+const computerSelection = () => { // GET COMPUTER INPUT
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     switch (randomNumber) {
         case 1:
@@ -13,7 +13,7 @@ const computerSelection = () => { // GETS COMPUTER INPUT
     }
 }
 
-const playerSelection = () => { // GETS USER INPUT
+const playerSelection = () => { // GET USER INPUT
     let playerSelection = prompt('Rock... Paper... Scissors... SHOOT!').toLowerCase();
     while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
         playerSelection = prompt('Try Again! Rock... Paper... Scissors... SHOOT!').toLowerCase();
@@ -21,7 +21,7 @@ const playerSelection = () => { // GETS USER INPUT
     return playerSelection;
 }
 
-function playGame(user, computer) { // PLAYS A SINGLE ROUND, USER VS COMPUTER
+function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER
     if (user === 'rock') {
         if (computer === 'scissors') {
             return 'YOU WIN! ROCK BEATS SCISSORS!';
@@ -49,7 +49,7 @@ function playGame(user, computer) { // PLAYS A SINGLE ROUND, USER VS COMPUTER
     }
 }
 
-function game() { // PLAYS A BEST OF 5 GAME
+function game() { // PLAY A BEST OF 5 GAME
     let userTotalScore = 0;
     let computerTotalScore = 0;
     while (userTotalScore < 3 && computerTotalScore < 3) {
@@ -63,6 +63,11 @@ function game() { // PLAYS A BEST OF 5 GAME
         } else {
             alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
         }
+    }
+    if (userTotalScore === 3) {
+        alert(`Congrats! You have beat the computer. \nNOW GO OUTSIDE YOU RAT!`)
+    } else {
+        alert(`You have lost to the computer! \nI think this was the plot to terminator or something...`)
     }
 }
 game();
