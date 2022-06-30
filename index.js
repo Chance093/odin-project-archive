@@ -1,28 +1,16 @@
-const btn1 = document.querySelector('#btn1');
-const btn2 = document.querySelector('#btn2');
-const btn3 = document.querySelector('#btn3');
+const buttons = document.querySelectorAll('.btn');
 const header = document.querySelector('.win-or-lose');
 const par = document.querySelector('.score');
 let userTotalScore = 0;
 let computerTotalScore = 0;
 
-btn1.addEventListener('click', to5);
-
-btn2.addEventListener('click', () => {
-    let playerInput = 'paper'
-    let computerInput = computerSelection();
-    console.log(playGame(playerInput, computerInput));
+buttons.forEach((btn) => {
+    btn.addEventListener('click', to5)
 })
 
-btn3.addEventListener('click', () => {
-    let playerInput = 'scissors'
-    let computerInput = computerSelection();
-    console.log(playGame(playerInput, computerInput));
-})
+function to5(e) {
 
-function to5() {
-
-    let playerInput = 'rock'
+    let playerInput = e.target.innerText.toLowerCase();
     let computerInput = computerSelection();
 
     header.textContent = playGame(playerInput, computerInput);
@@ -35,7 +23,6 @@ function to5() {
     } else {
         par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
     }
-
 }
 
 
@@ -50,14 +37,6 @@ function computerSelection() { // GET COMPUTER INPUT
         case 2:
             return 'scissors';
     }
-}
-
-function playerSelection() { // GET USER INPUT
-    let playerSelection = prompt('Rock... Paper... Scissors... SHOOT!').toLowerCase();
-    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-        playerSelection = prompt('Try Again! Rock... Paper... Scissors... SHOOT!').toLowerCase();
-    }
-    return playerSelection;
 }
 
 function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (SWITCH VERSION)
