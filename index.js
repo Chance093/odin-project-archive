@@ -1,4 +1,16 @@
-const computerSelection = () => { // GET COMPUTER INPUT
+const btn1 = document.querySelector('#btn1');
+const btn2 = document.querySelector('#btn2');
+const btn3 = document.querySelector('#btn3');
+
+btn1.addEventListener('click', () => {
+    let playerInput = 'rock'
+    let computerInput = computerSelection();
+    console.log(playGame(playerInput, computerInput));
+})
+
+
+
+function computerSelection() { // GET COMPUTER INPUT
     const randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber) {
         case 0:
@@ -10,7 +22,7 @@ const computerSelection = () => { // GET COMPUTER INPUT
     }
 }
 
-const playerSelection = () => { // GET USER INPUT
+function playerSelection() { // GET USER INPUT
     let playerSelection = prompt('Rock... Paper... Scissors... SHOOT!').toLowerCase();
     while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
         playerSelection = prompt('Try Again! Rock... Paper... Scissors... SHOOT!').toLowerCase();
