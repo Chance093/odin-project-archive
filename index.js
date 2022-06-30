@@ -8,6 +8,18 @@ btn1.addEventListener('click', () => {
     console.log(playGame(playerInput, computerInput));
 })
 
+btn2.addEventListener('click', () => {
+    let playerInput = 'paper'
+    let computerInput = computerSelection();
+    console.log(playGame(playerInput, computerInput));
+})
+
+btn3.addEventListener('click', () => {
+    let playerInput = 'scissors'
+    let computerInput = computerSelection();
+    console.log(playGame(playerInput, computerInput));
+})
+
 
 
 function computerSelection() { // GET COMPUTER INPUT
