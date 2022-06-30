@@ -1,15 +1,12 @@
 const computerSelection = () => { // GET COMPUTER INPUT
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
+    const randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber) {
-        case 1:
+        case 0:
             return 'rock';
-            break;
-        case 2:
+        case 1:
             return 'paper';
-            break;
-        case 3:
+        case 2:
             return 'scissors';
-            break;
     }
 }
 
@@ -21,75 +18,35 @@ const playerSelection = () => { // GET USER INPUT
     return playerSelection;
 }
 
-// function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (IF ELSE VERSION)
-//     if (user === 'rock') {
-//         if (computer === 'scissors') {
-//             return 'YOU WIN! ROCK BEATS SCISSORS!';
-//         } else if (computer === 'paper') {
-//             return 'YOU LOSE! PAPER BEATS ROCK!';
-//         } else {
-//             return 'YOU TIED!';
-//         }
-//     } else if (user === 'paper') {
-//         if (computer === 'rock') {
-//             return 'YOU WIN! PAPER BEATS ROCK!';
-//         } else if (computer === 'scissors') {
-//             return 'YOU LOSE! SCISSORS BEATS PAPER!';
-//         } else {
-//             return 'YOU TIED!';
-//         }
-//     } else if (user === 'scissors') {
-//         if (computer === 'paper') {
-//             return 'YOU WIN! SCISSORS BEATS PAPER!';
-//         } else if (computer === 'rock') {
-//             return 'YOU LOSE! ROCK BEATS SCISSORS!';
-//         } else {
-//             return 'YOU TIED!';
-//         }
-//     }
-// }
-
 function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (SWITCH VERSION)
     switch (user) {
         case 'rock':
             switch (computer) {
                 case 'rock':
                     return 'YOU TIED!';
-                    break;
                 case 'paper':
                     return 'YOU LOSE! PAPER BEATS ROCK!';
-                    break;
                 case 'scissors':
                     return 'YOU WIN! ROCK BEATS SCISSORS!';
-                    break;
             }
-            break;
         case 'paper':
             switch (computer) {
                 case 'rock':
                     return 'YOU WIN! PAPER BEATS ROCK!';
-                    break;
                 case 'paper':
                     return 'YOU TIED!';
-                    break;
                 case 'scissors':
                     return 'YOU LOSE! SCISSORS BEATS PAPER!';
-                    break;
             }
-            break;
         case 'scissors':
             switch (computer) {
                 case 'rock':
                     return 'YOU LOSE! ROCK BEATS SCISSORS!';
-                    break;
                 case 'paper':
                     return 'YOU WIN! SCISSORS BEATS PAPER!';
-                    break;
                 case 'scissors':
                     return 'YOU TIED!';
-                    break;
             }
-            break;
     }
 }
 
@@ -114,5 +71,5 @@ function game() { // PLAY A BEST OF 5 GAME
         alert(`You have lost to the computer! \nI think this was the plot to terminator or something...`)
     }
 }
-game();
+// game();
 
