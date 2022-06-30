@@ -1,11 +1,14 @@
 const btn1 = document.querySelector('#btn1');
 const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
+const header = document.querySelector('.win-or-lose');
+const par = document.querySelector('.score');
 
 btn1.addEventListener('click', () => {
     let playerInput = 'rock'
     let computerInput = computerSelection();
-    console.log(playGame(playerInput, computerInput));
+    // console.log(playGame(playerInput, computerInput));
+    header.textContent = playGame(playerInput, computerInput);
 })
 
 btn2.addEventListener('click', () => {
