@@ -4,12 +4,7 @@ const btn3 = document.querySelector('#btn3');
 const header = document.querySelector('.win-or-lose');
 const par = document.querySelector('.score');
 
-btn1.addEventListener('click', () => {
-    let playerInput = 'rock'
-    let computerInput = computerSelection();
-    // console.log(playGame(playerInput, computerInput));
-    header.textContent = playGame(playerInput, computerInput);
-})
+btn1.addEventListener('click', to5);
 
 btn2.addEventListener('click', () => {
     let playerInput = 'paper'
@@ -22,6 +17,25 @@ btn3.addEventListener('click', () => {
     let computerInput = computerSelection();
     console.log(playGame(playerInput, computerInput));
 })
+
+function to5() {
+    let userTotalScore = 0;
+    let computerTotalScore = 0;
+    let playerInput = 'rock'
+    let computerInput = computerSelection();
+    while (userTotalScore < 5 && computerTotalScore < 5) {
+        header.textContent = playGame(playerInput, computerInput);
+        if (header.textContent === 'YOU WIN! ROCK BEATS SCISSORS!' || header.textContent === 'YOU WIN! PAPER BEATS ROCK!' || header.textContent === 'YOU WIN! SCISSORS BEATS PAPER!') {
+            userTotalScore++;
+            par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
+        } else if (header.textContent === 'YOU LOSE! PAPER BEATS ROCK!' || header.textContent === 'YOU LOSE! SCISSORS BEATS PAPER!' || header.textContent === 'YOU LOSE! ROCK BEATS SCISSORS!') {
+            computerTotalScore++;
+            par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
+        } else {
+            par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
+        }
+    }
+}
 
 
 
@@ -80,7 +94,7 @@ function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (SW
 function game() { // PLAY A BEST OF 5 GAME
     let userTotalScore = 0;
     let computerTotalScore = 0;
-    while (userTotalScore < 3 && computerTotalScore < 3) {
+    while (userTotalScore < 5 && computerTotalScore < 5) {
         let playRound = playGame(playerSelection(), computerSelection());
         if (playRound === 'YOU WIN! ROCK BEATS SCISSORS!' || playRound === 'YOU WIN! PAPER BEATS ROCK!' || playRound === 'YOU WIN! SCISSORS BEATS PAPER!') {
             userTotalScore++;
