@@ -11,6 +11,10 @@ body {
     flex-direction: column;
 }
 
+.rowDiv {
+    display: flex;
+}
+
 .start {
     background-color: white;
     border: 1px solid brown;
