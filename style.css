@@ -4,3 +4,28 @@ button {
     color: white;
     font-family: 'Dosis', sans-serif;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+button {
+    border: 3px solid white;
+    border-radius: 10px;
+    font-size: 1.5em;
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+}
+
+.textbox {
+    margin-top: 4em;
+    text-align: center;
+    font-size: 1.5em;
+}
