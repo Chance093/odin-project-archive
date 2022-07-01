@@ -7,4 +7,12 @@ body {
     width: 800px;
     height: 800px;
     border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.start {
+    background-color: white;
+    border: 1px solid brown;
+    flex: 1;
 }
