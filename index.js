@@ -4,37 +4,7 @@ const par = document.querySelector('.score');
 let userTotalScore = 0;
 let computerTotalScore = 0;
 
-buttons.forEach((btn) => {
-    btn.addEventListener('click', to5)
-})
-
-function to5(e) {
-    if (userTotalScore === 5 || computerTotalScore === 5) {
-        return;
-    }
-    let playerInput = e.target.innerText.toLowerCase();
-    let computerInput = computerSelection();
-
-    header.textContent = playGame(playerInput, computerInput);
-    if (header.textContent === 'YOU WIN! ROCK BEATS SCISSORS!' || header.textContent === 'YOU WIN! PAPER BEATS ROCK!' || header.textContent === 'YOU WIN! SCISSORS BEATS PAPER!') {
-        userTotalScore++;
-        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
-    } else if (header.textContent === 'YOU LOSE! PAPER BEATS ROCK!' || header.textContent === 'YOU LOSE! SCISSORS BEATS PAPER!' || header.textContent === 'YOU LOSE! ROCK BEATS SCISSORS!') {
-        computerTotalScore++;
-        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
-    } else {
-        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
-    }
-    if (userTotalScore === 5) {
-        header.textContent = `Congrats! You have beat the computer. \nNOW GO OUTSIDE YOU RAT!`;
-    } else if (computerTotalScore === 5) {
-        header.textContent = `You have lost to the computer! \nI think this was the plot to terminator or something...`;
-    }
-}
-
-
-
-function computerSelection() { // GET COMPUTER INPUT
+function computerSelection() { // RANDOMLY GENERATES COMPUTER INPUT
     const randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber) {
         case 0:
@@ -46,7 +16,7 @@ function computerSelection() { // GET COMPUTER INPUT
     }
 }
 
-function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (SWITCH VERSION)
+function displayRoundWinner(user, computer) { // DISPLAYS THE WINNER OF A ROUND
     switch (user) {
         case 'rock':
             switch (computer) {
@@ -78,26 +48,35 @@ function playGame(user, computer) { // PLAY A SINGLE ROUND, USER VS COMPUTER (SW
     }
 }
 
-function game() { // PLAY A BEST OF 5 GAME
-    let userTotalScore = 0;
-    let computerTotalScore = 0;
-    while (userTotalScore < 5 && computerTotalScore < 5) {
-        let playRound = playGame(playerSelection(), computerSelection());
-        if (playRound === 'YOU WIN! ROCK BEATS SCISSORS!' || playRound === 'YOU WIN! PAPER BEATS ROCK!' || playRound === 'YOU WIN! SCISSORS BEATS PAPER!') {
-            userTotalScore++;
-            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
-        } else if (playRound === 'YOU LOSE! PAPER BEATS ROCK!' || playRound === 'YOU LOSE! SCISSORS BEATS PAPER!' || playRound === 'YOU LOSE! ROCK BEATS SCISSORS!') {
-            computerTotalScore++;
-            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
-        } else {
-            alert(`${playRound}\nThe score is ${userTotalScore} to ${computerTotalScore}`);
-        }
-    }
-    if (userTotalScore === 3) {
-        alert(`Congrats! You have beat the computer. \nNOW GO OUTSIDE YOU RAT!`)
+function addScore() { // ADDS SCORE TO WHOEVER WINS THAT ROUND
+    if (header.textContent === 'YOU WIN! ROCK BEATS SCISSORS!' || header.textContent === 'YOU WIN! PAPER BEATS ROCK!' || header.textContent === 'YOU WIN! SCISSORS BEATS PAPER!') {
+        userTotalScore++;
+        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
+    } else if (header.textContent === 'YOU LOSE! PAPER BEATS ROCK!' || header.textContent === 'YOU LOSE! SCISSORS BEATS PAPER!' || header.textContent === 'YOU LOSE! ROCK BEATS SCISSORS!') {
+        computerTotalScore++;
+        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
     } else {
-        alert(`You have lost to the computer! \nI think this was the plot to terminator or something...`)
+        par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
     }
 }
-// game();
 
+function displayGameWinner() { // WILL DISPLAY WHO WINS WHEN THEY REACH 5
+    if (userTotalScore === 5) {
+        header.textContent = `YOU BEAT THE COMPUTER!`;
+    } else if (computerTotalScore === 5) {
+        header.textContent = `THE COMPUTER BEAT YOU!`;
+    }
+}
+
+function playGame(e) { // PLAYS GAME UP TO 5 POINTS
+    if (userTotalScore === 5 || computerTotalScore === 5) return;
+    let playerInput = e.target.innerText.toLowerCase();
+    let computerInput = computerSelection();
+    header.textContent = displayRoundWinner(playerInput, computerInput);
+    addScore();
+    displayGameWinner();
+}
+
+buttons.forEach((btn) => { // FOR ROCK PAPER AND SCISSOR BUTTONS
+    btn.addEventListener('click', playGame)
+})
