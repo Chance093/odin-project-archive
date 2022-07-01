@@ -1,8 +1,10 @@
 const body = document.querySelector('body');
 const sizeBtn = document.querySelector('.size');
 const resetBtn = document.querySelector('.reset');
+const colorBtn = document.querySelector('.color');
 let container = document.querySelector('.container');
 let pixels = 16;
+let color = 'red';
 
 function createCanvas() { // CREATES CANVAS AND ALLOWS YOU TO PAINT ON IT
     for (let i = 1; i <= `${pixels}`; i++) {
@@ -18,9 +20,17 @@ function createCanvas() { // CREATES CANVAS AND ALLOWS YOU TO PAINT ON IT
     }
 }
 
-let color = 'blue'
+function changeColor() {
+    color = prompt(`What color would you like to use?
+            \nChoices: Red, Orange, Yellow, Green, Blue, Indigo, Violet`).toLowerCase();
+    while (color !== 'red' && color !== 'orange' && color !== 'yellow' && color !== 'green' && color !== 'blue' && color !== 'indigo' && color !== 'violet') {
+        color = prompt(`What color would you like to use?
+                \nChoices: Red, Orange, Yellow, Green, Blue, Indigo, Violet`).toLowerCase();
+    }
+}
 
 function paint(e) { // ADDS CLASS PAINT TO TARGETED DIV
+    e.target.classList.remove('red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet');
     e.target.classList.add(`${color}`);
 }
 
@@ -42,6 +52,7 @@ function canvasSize() { // ASKS USER WHAT THE CANVAS SIZE SHOULD BE
 
 sizeBtn.addEventListener('click', canvasSize);
 resetBtn.addEventListener('click', resetCanvas);
+colorBtn.addEventListener('click', changeColor);
 createCanvas();
 
 
