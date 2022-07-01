@@ -9,7 +9,9 @@ buttons.forEach((btn) => {
 })
 
 function to5(e) {
-
+    if (userTotalScore === 5 || computerTotalScore === 5) {
+        return;
+    }
     let playerInput = e.target.innerText.toLowerCase();
     let computerInput = computerSelection();
 
@@ -22,6 +24,11 @@ function to5(e) {
         par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
     } else {
         par.textContent = `The score is ${userTotalScore} to ${computerTotalScore}`;
+    }
+    if (userTotalScore === 5) {
+        header.textContent = `Congrats! You have beat the computer. \nNOW GO OUTSIDE YOU RAT!`;
+    } else if (computerTotalScore === 5) {
+        header.textContent = `You have lost to the computer! \nI think this was the plot to terminator or something...`;
     }
 }
 
