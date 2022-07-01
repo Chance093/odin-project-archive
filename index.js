@@ -1,10 +1,10 @@
 const body = document.querySelector('body');
-let container = document.querySelector('.container');
 const sizeBtn = document.querySelector('.size');
 const resetBtn = document.querySelector('.reset');
+let container = document.querySelector('.container');
 let pixels = 16;
 
-function createCanvas() {
+function createCanvas() { // CREATES CANVAS AND ALLOWS YOU TO PAINT ON IT
     for (let i = 1; i <= `${pixels}`; i++) {
         const rowDiv = document.createElement('div');
         rowDiv.classList.add('start', 'rowDiv');
@@ -19,14 +19,16 @@ function createCanvas() {
         }
     }
 }
-createCanvas();
 
+function resetCanvas() { // RESETS CANVAS TO WHATEVER WAS THE LAST CREATED CANVAS
+    body.removeChild(container);
+    container = document.createElement('div');
+    container.classList.add('container');
+    body.appendChild(container);
+    createCanvas();
+}
 
-
-sizeBtn.addEventListener('click', canvasSize);
-resetBtn.addEventListener('click', resetCanvas);
-
-function canvasSize() {
+function canvasSize() { // ASKS USER WHAT THE CANVAS SIZE SHOULD BE
     pixels = parseInt(prompt('On a scale of 16-100, how big would you like your canvas?'));
     while (pixels < 16 || pixels > 100 || !pixels) {
         pixels = parseInt(prompt('The scale must be from 16-100'));
@@ -34,10 +36,8 @@ function canvasSize() {
     resetCanvas();
 }
 
-function resetCanvas() {
-    body.removeChild(container);
-    container = document.createElement('div');
-    container.classList.add('container');
-    body.appendChild(container);
-    createCanvas();
-}
+sizeBtn.addEventListener('click', canvasSize);
+resetBtn.addEventListener('click', resetCanvas);
+createCanvas();
+
+
