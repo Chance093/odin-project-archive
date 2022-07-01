@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 let container = document.querySelector('.container');
 const sizeBtn = document.querySelector('.size');
+const resetBtn = document.querySelector('.reset');
 let pixels = 16;
 
 function createCanvas() {
@@ -23,6 +24,10 @@ createCanvas();
 
 
 sizeBtn.addEventListener('click', canvasSize);
+resetBtn.addEventListener('click', () => {
+    resetCanvas();
+    createCanvas();
+});
 
 function canvasSize() {
     pixels = parseInt(prompt('On a scale of 16-100, how big would you like your canvas?'));
