@@ -1,0 +1,10 @@
+body {
+    box-sizing: border-box;
+    background-color: rgb(47, 36, 47);
+}
+
+.container {
+    width: 800px;
+    height: 800px;
+    border: 3px solid black;
+}
