@@ -25,7 +25,10 @@ createCanvas();
 sizeBtn.addEventListener('click', canvasSize);
 
 function canvasSize() {
-    pixels = prompt('How big would you like the canvas?')
+    pixels = parseInt(prompt('On a scale of 16-100, how big would you like your canvas?'));
+    while (pixels < 16 || pixels > 100 || !pixels) {
+        pixels = parseInt(prompt('The scale must be from 16-100'));
+    }
     resetCanvas();
     createCanvas();
 }
