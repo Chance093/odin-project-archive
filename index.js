@@ -13,11 +13,15 @@ function createCanvas() { // CREATES CANVAS AND ALLOWS YOU TO PAINT ON IT
             const columnDiv = document.createElement('div');
             columnDiv.classList.add('start', 'columnDiv');
             rowDiv.appendChild(columnDiv);
-            columnDiv.addEventListener('mouseover', () => {
-                columnDiv.classList.add('paint');
-            });
+            columnDiv.addEventListener('mouseover', paint);
         }
     }
+}
+
+let color = 'blue'
+
+function paint(e) { // ADDS CLASS PAINT TO TARGETED DIV
+    e.target.classList.add(`${color}`);
 }
 
 function resetCanvas() { // RESETS CANVAS TO WHATEVER WAS THE LAST CREATED CANVAS
