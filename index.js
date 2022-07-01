@@ -24,10 +24,7 @@ createCanvas();
 
 
 sizeBtn.addEventListener('click', canvasSize);
-resetBtn.addEventListener('click', () => {
-    resetCanvas();
-    createCanvas();
-});
+resetBtn.addEventListener('click', resetCanvas);
 
 function canvasSize() {
     pixels = parseInt(prompt('On a scale of 16-100, how big would you like your canvas?'));
@@ -35,7 +32,6 @@ function canvasSize() {
         pixels = parseInt(prompt('The scale must be from 16-100'));
     }
     resetCanvas();
-    createCanvas();
 }
 
 function resetCanvas() {
@@ -43,4 +39,5 @@ function resetCanvas() {
     container = document.createElement('div');
     container.classList.add('container');
     body.appendChild(container);
+    createCanvas();
 }
