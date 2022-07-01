@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll('.btn');
 const header = document.querySelector('.win-or-lose');
 const par = document.querySelector('.score');
+const header2 = document.querySelector('h2');
 let userTotalScore = 0;
 let computerTotalScore = 0;
 
@@ -62,9 +63,9 @@ function addScore() { // ADDS SCORE TO WHOEVER WINS THAT ROUND
 
 function displayGameWinner() { // WILL DISPLAY WHO WINS WHEN THEY REACH 5
     if (userTotalScore === 5) {
-        header.textContent = `YOU BEAT THE COMPUTER!`;
+        header2.textContent = `YOU BEAT THE COMPUTER!`;
     } else if (computerTotalScore === 5) {
-        header.textContent = `THE COMPUTER BEAT YOU!`;
+        header2.textContent = `THE COMPUTER BEAT YOU!`;
     }
 }
 
