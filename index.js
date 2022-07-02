@@ -1,4 +1,5 @@
 const body = document.querySelector('body');
+const drawCon = document.querySelector('.draw');
 const sizeBtn = document.querySelector('.size');
 const resetBtn = document.querySelector('.reset');
 const colorBtn = document.querySelector('.color');
@@ -41,10 +42,10 @@ function erase() { // WILL CHANGE DIV COLOR TO WHITE
 }
 
 function resetCanvas() { // RESETS CANVAS TO WHATEVER WAS THE LAST CREATED CANVAS
-    body.removeChild(container);
+    drawCon.removeChild(container);
     container = document.createElement('div');
     container.classList.add('container');
-    body.appendChild(container);
+    drawCon.appendChild(container);
     createCanvas();
 }
 

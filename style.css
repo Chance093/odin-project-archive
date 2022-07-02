@@ -8,6 +8,11 @@ body {
     color: white;
 }
 
+h1 {
+    margin-bottom: 50px;
+    color: rgb(207, 184, 54);
+}
+
 .content {
     display: flex;
     gap: 3em;
