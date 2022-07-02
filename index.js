@@ -3,6 +3,7 @@ const sizeBtn = document.querySelector('.size');
 const resetBtn = document.querySelector('.reset');
 const colorBtn = document.querySelector('.color');
 const eraseBtn = document.querySelector('.erase');
+const eventBtn = document.querySelector('.event');
 let container = document.querySelector('.container');
 let pixels = 16;
 let color = 'red';
