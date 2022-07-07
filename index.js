@@ -14,6 +14,7 @@ const percentBtn = document.querySelector('.percent');
 const reciprocalBtn = document.querySelector('.reciprocal');
 const squareBtn = document.querySelector('.square');
 const sqrtBtn = document.querySelector('.sqrt');
+const plusMinusBtn = document.querySelector('.plus-minus');
 
 
 // FUNCTIONS
@@ -70,6 +71,30 @@ function sqrt() {
     }
 }
 
+function plusMinus() {
+    if (answer.innerText) {
+        leftOperand.innerText = answer.innerText;
+        answer.innerText = '';
+        if (leftOperand.innerText < 0) {
+            leftOperand.innerText = Math.abs(leftOperand.innerText);
+        } else {
+            leftOperand.innerText = -Math.abs(leftOperand.innerText);
+        }
+    } else if (!midOperator.innerText) {
+        if (leftOperand.innerText < 0) {
+            leftOperand.innerText = Math.abs(leftOperand.innerText);
+        } else {
+            leftOperand.innerText = -Math.abs(leftOperand.innerText);
+        }
+    } else {
+        if (rightOperand.innerText < 0) {
+            rightOperand.innerText = Math.abs(rightOperand.innerText);
+        } else {
+            rightOperand.innerText = -Math.abs(rightOperand.innerText);
+        }
+    }
+}
+
 function clearDisplay() { // Clears display of all text
     leftOperand.innerText = '';
     midOperator.innerText = '';
@@ -78,7 +103,9 @@ function clearDisplay() { // Clears display of all text
 }
 
 function clearEntry() { // Clear the latest entry on the display
-    if (!midOperator.innerText) {
+    if (answer.innerText) {
+        clearDisplay();
+    } else if (!midOperator.innerText) {
         leftOperand.innerText = '';
     } else {
         rightOperand.innerText = '';
@@ -177,3 +204,4 @@ percentBtn.addEventListener('click', percent);
 reciprocalBtn.addEventListener('click', reciprocal);
 squareBtn.addEventListener('click', square);
 sqrtBtn.addEventListener('click', sqrt);
+plusMinusBtn.addEventListener('click', plusMinus);
