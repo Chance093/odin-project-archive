@@ -12,6 +12,7 @@ const backspaceBtn = document.querySelector('.backspace');
 const clearEntryBtn = document.querySelector('.clear-entry');
 const percentBtn = document.querySelector('.percent');
 const reciprocalBtn = document.querySelector('.reciprocal');
+const squareBtn = document.querySelector('.square');
 
 
 // FUNCTIONS
@@ -49,6 +50,14 @@ function reciprocal() { // Gives you the reciprocal value of a number
         leftOperand.innerText = 1 / leftOperand.innerText;
     } else {
         rightOperand.innerText = 1 / rightOperand.innerText;
+    }
+}
+
+function square() {
+    if (!midOperator.innerText) {
+        leftOperand.innerText = leftOperand.innerText ** 2;
+    } else {
+        rightOperand.innerText = rightOperand.innerText ** 2;
     }
 }
 
@@ -157,3 +166,4 @@ decimal.addEventListener('click', inputDecimal);
 backspaceBtn.addEventListener('click', backspace);
 percentBtn.addEventListener('click', percent);
 reciprocalBtn.addEventListener('click', reciprocal);
+squareBtn.addEventListener('click', square);
