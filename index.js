@@ -41,6 +41,8 @@ const operatorBtns = document.querySelectorAll('.operators button');
 const leftOperand = document.querySelector('.left-operand');
 const midOperator = document.querySelector('.operator');
 const rightOperand = document.querySelector('.right-operand');
+const answer = document.querySelector('.answer');
+const equals = document.querySelector('.equal');
 
 
 digitBtns.forEach((button) => {
@@ -59,4 +61,34 @@ operatorBtns.forEach((button) => {
             midOperator.innerText += button.innerText;
         }
     })
+})
+
+equals.addEventListener('click', () => {
+    if (leftOperand && midOperator && rightOperand) {
+        if (midOperator.innerText === '+') {
+            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), add);
+            leftOperand.innerText = '';
+            midOperator.innerText = '';
+            rightOperand.innerText = '';
+            answer.innerText = result;
+        } else if (midOperator.innerText === '-') {
+            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), subtract);
+            leftOperand.innerText = '';
+            midOperator.innerText = '';
+            rightOperand.innerText = '';
+            answer.innerText = result;
+        } else if (midOperator.innerText === '*') {
+            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), multiply);
+            leftOperand.innerText = '';
+            midOperator.innerText = '';
+            rightOperand.innerText = '';
+            answer.innerText = result;
+        } else if (midOperator.innerText === '/') {
+            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), divide);
+            leftOperand.innerText = '';
+            midOperator.innerText = '';
+            rightOperand.innerText = '';
+            answer.innerText = result;
+        }
+    }
 })
