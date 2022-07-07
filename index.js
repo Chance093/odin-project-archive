@@ -36,6 +36,13 @@ function operate(a, b, math) {
     return math(a, b);
 }
 
+function clear() {
+    leftOperand.innerText = '';
+    midOperator.innerText = '';
+    rightOperand.innerText = '';
+    answer.innerText = '';
+}
+
 const digitBtns = document.querySelectorAll('.digits button');
 const operatorBtns = document.querySelectorAll('.operators button');
 const leftOperand = document.querySelector('.left-operand');
@@ -43,6 +50,7 @@ const midOperator = document.querySelector('.operator');
 const rightOperand = document.querySelector('.right-operand');
 const answer = document.querySelector('.answer');
 const equals = document.querySelector('.equal');
+const clearBtn = document.querySelector('.clear');
 
 
 digitBtns.forEach((button) => {
@@ -67,28 +75,22 @@ equals.addEventListener('click', () => {
     if (leftOperand && midOperator && rightOperand) {
         if (midOperator.innerText === '+') {
             let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), add);
-            leftOperand.innerText = '';
-            midOperator.innerText = '';
-            rightOperand.innerText = '';
+            clear();
             answer.innerText = result;
         } else if (midOperator.innerText === '-') {
             let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), subtract);
-            leftOperand.innerText = '';
-            midOperator.innerText = '';
-            rightOperand.innerText = '';
+            clear();
             answer.innerText = result;
         } else if (midOperator.innerText === '*') {
             let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), multiply);
-            leftOperand.innerText = '';
-            midOperator.innerText = '';
-            rightOperand.innerText = '';
+            clear();
             answer.innerText = result;
         } else if (midOperator.innerText === '/') {
             let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), divide);
-            leftOperand.innerText = '';
-            midOperator.innerText = '';
-            rightOperand.innerText = '';
+            clear();
             answer.innerText = result;
         }
     }
 })
+
+clearBtn.addEventListener('click', clear);
