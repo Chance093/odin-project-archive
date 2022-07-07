@@ -97,29 +97,29 @@ function runExpression() { // Runs expression that is on display
     if (leftOperand.innerText && midOperator.innerText && rightOperand.innerText) {
         switch (midOperator.innerText) {
             case '+': {
-                let result = operate(parseInt(leftOperand.innerText),
-                    parseInt(rightOperand.innerText), add);
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), add);
                 clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '-': {
-                let result = operate(parseInt(leftOperand.innerText),
-                    parseInt(rightOperand.innerText), subtract);
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), subtract);
                 clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '*': {
-                let result = operate(parseInt(leftOperand.innerText),
-                    parseInt(rightOperand.innerText), multiply);
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), multiply);
                 clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '/': {
-                let result = operate(parseInt(leftOperand.innerText),
-                    parseInt(rightOperand.innerText), divide);
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), divide);
                 clearDisplay();
                 answer.innerText = result;
                 break;
