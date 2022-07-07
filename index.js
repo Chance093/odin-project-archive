@@ -1,48 +1,4 @@
-// 1. Click on digits to make left operand
-//     - Set up a span inside the div called left operand
-//     - Everytime a digit is clicked, it will add button.innerText to span.innerText
-// 2. Click on operator to make the operator
-//     - Set up a span inside the div called operator
-//     - Any digits pressed after this step will be put in the right span
-//     - This will let our operator function know which function to use
-//     - Only allow one operator to be clicked on
-// 3. Click on digits to make right operand
-//     - If the operator span has innerText, then add digits to the right span
-// 4. Click equal to run a function for the given string
-//     - If all 3 spans are filled in, run the function operate()
-//     - Reset the display and make the display show the answer
-//     - If the operator span shows +, run add()...
-
-
-
-
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-
-function operate(a, b, math) {
-    return math(a, b);
-}
-
-function clear() {
-    leftOperand.innerText = '';
-    midOperator.innerText = '';
-    rightOperand.innerText = '';
-    answer.innerText = '';
-}
-
+// DOM NODES
 const digitBtns = document.querySelectorAll('.digits button');
 const operatorBtns = document.querySelectorAll('.operators button');
 const leftOperand = document.querySelector('.left-operand');
@@ -53,44 +9,86 @@ const equals = document.querySelector('.equal');
 const clearBtn = document.querySelector('.clear');
 
 
-digitBtns.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (!midOperator.innerText) {
-            leftOperand.innerText += button.innerText;
-        } else {
-            rightOperand.innerText += button.innerText;
-        }
-    })
-})
+// FUNCTIONS
+function add(a, b) { // Function for + operator (Callback)
+    return a + b;
+}
 
-operatorBtns.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (!midOperator.innerText) {
-            midOperator.innerText += button.innerText;
-        }
-    })
-})
+function subtract(a, b) { // Function for - operator (Callback)
+    return a - b;
+}
 
-equals.addEventListener('click', () => {
-    if (leftOperand && midOperator && rightOperand) {
-        if (midOperator.innerText === '+') {
-            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), add);
-            clear();
-            answer.innerText = result;
-        } else if (midOperator.innerText === '-') {
-            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), subtract);
-            clear();
-            answer.innerText = result;
-        } else if (midOperator.innerText === '*') {
-            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), multiply);
-            clear();
-            answer.innerText = result;
-        } else if (midOperator.innerText === '/') {
-            let result = operate(parseInt(leftOperand.innerText), parseInt(rightOperand.innerText), divide);
-            clear();
-            answer.innerText = result;
+function multiply(a, b) { // Function for * operator (Callback)
+    return a * b;
+}
+
+function divide(a, b) { // Function for / operator (Callback)
+    return a / b;
+}
+
+function operate(a, b, math) { // Will operate on expression (Callback)
+    return math(a, b);
+}
+
+function clearDisplay() { // Clears display of all text
+    leftOperand.innerText = '';
+    midOperator.innerText = '';
+    rightOperand.innerText = '';
+    answer.innerText = '';
+}
+
+function inputDigit() { // Inputs digit onto display
+    if (!midOperator.innerText) {
+        leftOperand.innerText += this.innerText;
+    } else {
+        rightOperand.innerText += this.innerText;
+    }
+}
+
+function inputOperator() { // Inputs operator onto display
+    if (!midOperator.innerText) {
+        midOperator.innerText += this.innerText;
+    }
+}
+
+function runExpression() { // Runs expression that is on display
+    if (leftOperand.innerText && midOperator.innerText && rightOperand.innerText) {
+        switch (midOperator.innerText) {
+            case '+': {
+                let result = operate(parseInt(leftOperand.innerText),
+                    parseInt(rightOperand.innerText), add);
+                clearDisplay();
+                answer.innerText = result;
+                break;
+            }
+            case '-': {
+                let result = operate(parseInt(leftOperand.innerText),
+                    parseInt(rightOperand.innerText), subtract);
+                clearDisplay();
+                answer.innerText = result;
+                break;
+            }
+            case '*': {
+                let result = operate(parseInt(leftOperand.innerText),
+                    parseInt(rightOperand.innerText), multiply);
+                clearDisplay();
+                answer.innerText = result;
+                break;
+            }
+            case '/': {
+                let result = operate(parseInt(leftOperand.innerText),
+                    parseInt(rightOperand.innerText), divide);
+                clearDisplay();
+                answer.innerText = result;
+                break;
+            }
         }
     }
-})
+}
 
-clearBtn.addEventListener('click', clear);
+
+// EVENT LISTENERS
+digitBtns.forEach(button => button.addEventListener('click', inputDigit))
+operatorBtns.forEach(button => button.addEventListener('click', inputOperator))
+equals.addEventListener('click', runExpression);
+clearBtn.addEventListener('click', clearDisplay);
