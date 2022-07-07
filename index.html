@@ -12,35 +12,48 @@
 <body>
     <div class="display">
         <span class="left-operand"></span>
-        <span class="operator"></span>
+        <span class="mid-operator"></span>
         <span class="right-operand"></span>
         <div class="answer"></div>
     </div>
-    <div class="digits">
-        <button>0</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-    </div>
-    <button class="decimal">.</button>
-    <div class="operators">
-        <button>+</button>
-        <button>-</button>
-        <button>*</button>
-        <button>/</button>
-    </div>
-    <button class="equal">=</button>
-    <div class="delete">
-        <button class="backspace">
-            <= </button>
-                <button class="clear">C</button>
-                <button class="clear-entry">CE</button>
+    <div class="buttons">
+        <div class="row1">
+            <button>%</button>
+            <button class="clear-entry">CE</button>
+            <button class="clear">C</button>
+            <button class="backspace">
+                <= </button>
+        </div>
+        <div class="row2">
+            <button>1/x</button>
+            <button>x^2</button>
+            <button>sqrt</button>
+            <button class="operator">/</button>
+        </div>
+        <div class="row3">
+            <button class="digit">7</button>
+            <button class="digit">8</button>
+            <button class="digit">9</button>
+            <button class="operator">*</button>
+        </div>
+        <div class="row4">
+            <button class="digit">4</button>
+            <button class="digit">5</button>
+            <button class="digit">6</button>
+            <button class="operator">-</button>
+        </div>
+        <div class="row5">
+            <button class="digit">1</button>
+            <button class="digit">2</button>
+            <button class="digit">3</button>
+            <button class="operator">+</button>
+        </div>
+        <div class="row6">
+            <button>+/-</button>
+            <button class="digit">0</button>
+            <button class="decimal">.</button>
+            <button class="equal">=</button>
+        </div>
     </div>
 
     <script src="index.js"></script>

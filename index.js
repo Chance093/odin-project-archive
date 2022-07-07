@@ -1,8 +1,8 @@
 // DOM NODES
-const digitBtns = document.querySelectorAll('.digits button');
-const operatorBtns = document.querySelectorAll('.operators button');
+const digitBtns = document.querySelectorAll('.digit');
+const operatorBtns = document.querySelectorAll('.operator');
 const leftOperand = document.querySelector('.left-operand');
-const midOperator = document.querySelector('.operator');
+const midOperator = document.querySelector('.mid-operator');
 const rightOperand = document.querySelector('.right-operand');
 const answer = document.querySelector('.answer');
 const equals = document.querySelector('.equal');
