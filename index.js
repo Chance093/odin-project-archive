@@ -48,6 +48,11 @@ function inputDigit() { // Inputs digit onto display
 function inputOperator() { // Inputs operator onto display
     if (!midOperator.innerText) {
         midOperator.innerText += this.innerText;
+    } else if (midOperator.innerText && rightOperand.innerText) {
+        runExpression();
+        leftOperand.innerText = answer.innerText;
+        answer.innerText = '';
+        midOperator.innerText += this.innerText;
     }
 }
 
