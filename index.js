@@ -1,3 +1,21 @@
+// 1. Click on digits to make left operand
+//     - Set up a span inside the div called left operand
+//     - Everytime a digit is clicked, it will add button.innerText to span.innerText
+// 2. Click on operator to make the operator
+//     - Set up a span inside the div called operator
+//     - Any digits pressed after this step will be put in the right span
+//     - This will let our operator function know which function to use
+//     - Only allow one operator to be clicked on
+// 3. Click on digits to make right operand
+//     - If the operator span has innerText, then add digits to the right span
+// 4. Click equal to run a function for the given string
+//     - If all 3 spans are filled in, run the function operate()
+//     - Reset the display and make the display show the answer
+//     - If the operator span shows +, run add()...
+
+
+
+
 function add(a, b) {
     return a + b;
 }
