@@ -13,6 +13,7 @@ const clearEntryBtn = document.querySelector('.clear-entry');
 const percentBtn = document.querySelector('.percent');
 const reciprocalBtn = document.querySelector('.reciprocal');
 const squareBtn = document.querySelector('.square');
+const sqrtBtn = document.querySelector('.sqrt');
 
 
 // FUNCTIONS
@@ -58,6 +59,14 @@ function square() {
         leftOperand.innerText = leftOperand.innerText ** 2;
     } else {
         rightOperand.innerText = rightOperand.innerText ** 2;
+    }
+}
+
+function sqrt() {
+    if (!midOperator.innerText) {
+        leftOperand.innerText = Math.sqrt(leftOperand.innerText);
+    } else {
+        rightOperand.innerText = Math.sqrt(rightOperand.innerText);
     }
 }
 
@@ -167,3 +176,4 @@ backspaceBtn.addEventListener('click', backspace);
 percentBtn.addEventListener('click', percent);
 reciprocalBtn.addEventListener('click', reciprocal);
 squareBtn.addEventListener('click', square);
+sqrtBtn.addEventListener('click', sqrt);
