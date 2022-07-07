@@ -11,6 +11,7 @@ const decimal = document.querySelector('.decimal');
 const backspaceBtn = document.querySelector('.backspace');
 const clearEntryBtn = document.querySelector('.clear-entry');
 const percentBtn = document.querySelector('.percent');
+const reciprocalBtn = document.querySelector('.reciprocal');
 
 
 // FUNCTIONS
@@ -40,6 +41,14 @@ function percent() { // Turns number into a percent decimal form
         leftOperand.innerText = leftOperand.innerText / 100;
     } else {
         rightOperand.innerText = rightOperand.innerText / 100;
+    }
+}
+
+function reciprocal() { // Gives you the reciprocal value of a number
+    if (!midOperator.innerText) {
+        leftOperand.innerText = 1 / leftOperand.innerText;
+    } else {
+        rightOperand.innerText = 1 / rightOperand.innerText;
     }
 }
 
@@ -147,3 +156,4 @@ clearEntryBtn.addEventListener('click', clearEntry);
 decimal.addEventListener('click', inputDecimal);
 backspaceBtn.addEventListener('click', backspace);
 percentBtn.addEventListener('click', percent);
+reciprocalBtn.addEventListener('click', reciprocal);
