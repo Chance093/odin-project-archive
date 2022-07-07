@@ -23,6 +23,7 @@ function multiply(a, b) { // Function for * operator (Callback)
 }
 
 function divide(a, b) { // Function for / operator (Callback)
+    if (!b) return 'You thought'
     return a / b;
 }
 
