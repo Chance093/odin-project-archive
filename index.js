@@ -41,7 +41,7 @@ function clearDisplay() { // Clears display of all text
     answer.innerText = '';
 }
 
-function clearEntry() {
+function clearEntry() { // Clear the latest entry on the display
     if (!midOperator.innerText) {
         leftOperand.innerText = '';
     } else {
@@ -49,7 +49,7 @@ function clearEntry() {
     }
 }
 
-function backspace() {
+function backspace() { // Delete latest character entered
     if (!midOperator.innerText) {
         leftOperand.innerText = leftOperand.innerText.slice(0, -1);
     } else {
@@ -57,15 +57,18 @@ function backspace() {
     }
 }
 
-function inputDigit() { // Inputs digit onto display
-    if (!midOperator.innerText) {
+function inputDigit() { // Inputs digit onto display (Callback)
+    if (answer.innerText) {
+        clearDisplay();
+        leftOperand.innerText += this.innerText;
+    } else if (!midOperator.innerText) {
         leftOperand.innerText += this.innerText;
     } else {
         rightOperand.innerText += this.innerText;
     }
 }
 
-function inputDecimal() {
+function inputDecimal() { // Input decimal onto display (Callback)
     if (!midOperator.innerText) {
         if (leftOperand.innerText.includes('.')) return;
         leftOperand.innerText += this.innerText;
@@ -75,7 +78,7 @@ function inputDecimal() {
     }
 }
 
-function inputOperator() { // Inputs operator onto display
+function inputOperator() { // Inputs operator onto display (Callback)
     if (answer.innerText) {
         leftOperand.innerText = answer.innerText;
         answer.innerText = '';
