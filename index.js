@@ -10,6 +10,7 @@ const clearBtn = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
 const backspaceBtn = document.querySelector('.backspace');
 const clearEntryBtn = document.querySelector('.clear-entry');
+const percentBtn = document.querySelector('.percent');
 
 
 // FUNCTIONS
@@ -32,6 +33,14 @@ function divide(a, b) { // Function for / operator (Callback)
 
 function operate(a, b, math) { // Will operate on expression (Callback)
     return math(a, b);
+}
+
+function percent() { // Turns number into a percent decimal form
+    if (!midOperator.innerText) {
+        leftOperand.innerText = leftOperand.innerText / 100;
+    } else {
+        rightOperand.innerText = rightOperand.innerText / 100;
+    }
 }
 
 function clearDisplay() { // Clears display of all text
@@ -137,3 +146,4 @@ clearBtn.addEventListener('click', clearDisplay);
 clearEntryBtn.addEventListener('click', clearEntry);
 decimal.addEventListener('click', inputDecimal);
 backspaceBtn.addEventListener('click', backspace);
+percentBtn.addEventListener('click', percent);
