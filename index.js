@@ -20,16 +20,17 @@ function operate(a, b, math) {
 
 const digitBtns = document.querySelectorAll('.digits button');
 const operatorBtns = document.querySelectorAll('.operators button');
+const display = document.querySelector('.display');
 
 
 digitBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(button.innerText);
+        display.innerText += button.innerText;
     })
 })
 
 operatorBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(button.innerText);
+        display.innerText += button.innerText;
     })
 })
