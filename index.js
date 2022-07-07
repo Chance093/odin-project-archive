@@ -9,6 +9,7 @@ const equals = document.querySelector('.equal');
 const clearBtn = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
 const backspaceBtn = document.querySelector('.backspace');
+const clearEntryBtn = document.querySelector('.clear-entry');
 
 
 // FUNCTIONS
@@ -38,6 +39,14 @@ function clearDisplay() { // Clears display of all text
     midOperator.innerText = '';
     rightOperand.innerText = '';
     answer.innerText = '';
+}
+
+function clearEntry() {
+    if (!midOperator.innerText) {
+        leftOperand.innerText = '';
+    } else {
+        rightOperand.innerText = '';
+    }
 }
 
 function backspace() {
@@ -122,5 +131,6 @@ digitBtns.forEach(button => button.addEventListener('click', inputDigit))
 operatorBtns.forEach(button => button.addEventListener('click', inputOperator))
 equals.addEventListener('click', runExpression);
 clearBtn.addEventListener('click', clearDisplay);
+clearEntryBtn.addEventListener('click', clearEntry);
 decimal.addEventListener('click', inputDecimal);
 backspaceBtn.addEventListener('click', backspace);
