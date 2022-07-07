@@ -38,17 +38,25 @@ function operate(a, b, math) {
 
 const digitBtns = document.querySelectorAll('.digits button');
 const operatorBtns = document.querySelectorAll('.operators button');
-const display = document.querySelector('.display');
+const leftOperand = document.querySelector('.left-operand');
+const midOperator = document.querySelector('.operator');
+const rightOperand = document.querySelector('.right-operand');
 
 
 digitBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        display.innerText += button.innerText;
+        if (!midOperator.innerText) {
+            leftOperand.innerText += button.innerText;
+        } else {
+            rightOperand.innerText += button.innerText;
+        }
     })
 })
 
 operatorBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        display.innerText += button.innerText;
+        if (!midOperator.innerText) {
+            midOperator.innerText += button.innerText;
+        }
     })
 })
