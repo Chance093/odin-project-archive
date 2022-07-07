@@ -7,6 +7,7 @@ const rightOperand = document.querySelector('.right-operand');
 const answer = document.querySelector('.answer');
 const equals = document.querySelector('.equal');
 const clearBtn = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
 
 
 // FUNCTIONS
@@ -42,6 +43,16 @@ function inputDigit() { // Inputs digit onto display
     if (!midOperator.innerText) {
         leftOperand.innerText += this.innerText;
     } else {
+        rightOperand.innerText += this.innerText;
+    }
+}
+
+function inputDecimal() {
+    if (!midOperator.innerText) {
+        if (leftOperand.innerText.includes('.')) return;
+        leftOperand.innerText += this.innerText;
+    } else {
+        if (rightOperand.innerText.includes('.')) return;
         rightOperand.innerText += this.innerText;
     }
 }
@@ -102,3 +113,4 @@ digitBtns.forEach(button => button.addEventListener('click', inputDigit))
 operatorBtns.forEach(button => button.addEventListener('click', inputOperator))
 equals.addEventListener('click', runExpression);
 clearBtn.addEventListener('click', clearDisplay);
+decimal.addEventListener('click', inputDecimal);
