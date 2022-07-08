@@ -4,8 +4,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Open Sans', sans-serif;
-    box-sizing: border-box;
 }
 
 .calculator {
@@ -70,10 +68,6 @@ svg {
 
 .row1 svg {
     height: 25px;
-}
-
-.percent button {
-    margin-bottom: 0px;
 }
 
 .row1,
