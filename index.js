@@ -17,7 +17,7 @@ const sqrtBtn = document.querySelector('.sqrt');
 const plusMinusBtn = document.querySelector('.plus-minus');
 
 
-// FUNCTIONS
+// OPERATOR FUNCTIONS
 function add(a, b) { // Function for + operator (Callback)
     return a + b;
 }
@@ -39,6 +39,132 @@ function operate(a, b, math) { // Will operate on expression (Callback)
     return math(a, b);
 }
 
+function runExpression() { // Function for = operator
+    if (leftOperand.innerText && midOperator.innerText && rightOperand.innerText) {
+        switch (midOperator.innerText) {
+            case '+': {
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), add);
+                answer.innerText = roundDecimal(result);
+                break;
+            }
+            case '-': {
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), subtract);
+                answer.innerText = roundDecimal(result);
+                break;
+            }
+            case '*': {
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), multiply);
+                answer.innerText = roundDecimal(result);
+                break;
+            }
+            case '/': {
+                let result = operate(parseFloat(leftOperand.innerText),
+                    parseFloat(rightOperand.innerText), divide);
+                answer.innerText = roundDecimal(result);
+                break;
+            }
+        }
+    }
+}
+
+// INPUT FUNCTIONS
+function inputDigit() { // Inputs digit using button (Callback)
+    if (answer.innerText) {
+        clearDisplay();
+        leftOperand.innerText += this.innerText;
+    } else if (!midOperator.innerText) {
+        leftOperand.innerText += this.innerText;
+    } else {
+        rightOperand.innerText += this.innerText;
+    }
+}
+
+function inputDigitKey(e) { // Inputs digit using key (Callback)
+    if (answer.innerText) {
+        clearDisplay();
+        leftOperand.innerText += parseFloat(e.key);
+    } else if (!midOperator.innerText) {
+        leftOperand.innerText += parseFloat(e.key);
+    } else {
+        rightOperand.innerText += parseFloat(e.key);
+    }
+}
+
+function inputOperator() { // Inputs operator using button (Callback)
+    if (answer.innerText) {
+        let newAnswer = answer.innerText
+        clearDisplay();
+        leftOperand.innerText = newAnswer;
+        midOperator.innerText += this.innerText;
+    } else if (!midOperator.innerText) {
+        midOperator.innerText += this.innerText;
+    } else if (midOperator.innerText && rightOperand.innerText) {
+        runExpression();
+        leftOperand.innerText = answer.innerText;
+        answer.innerText = '';
+        midOperator.innerText += this.innerText;
+    }
+}
+
+function inputOperatorKey(e) { // Inputs operator using key (Callback)
+    if (answer.innerText) {
+        let newAnswer = answer.innerText
+        clearDisplay();
+        leftOperand.innerText = newAnswer;
+        midOperator.innerText += e.key;
+    } else if (!midOperator.innerText) {
+        midOperator.innerText += e.key;
+    } else if (midOperator.innerText && rightOperand.innerText) {
+        runExpression();
+        leftOperand.innerText = answer.innerText;
+        answer.innerText = '';
+        midOperator.innerText += e.key;
+    }
+}
+
+function inputDecimal() { // Input decimal using button (Callback)
+    if (!midOperator.innerText) {
+        if (leftOperand.innerText.includes('.')) return;
+        leftOperand.innerText += this.innerText;
+    } else {
+        if (rightOperand.innerText.includes('.')) return;
+        rightOperand.innerText += this.innerText;
+    }
+}
+
+function inputDecimalKey(e) { // Input decimal using key (Callback)
+    if (!midOperator.innerText) {
+        if (leftOperand.innerText.includes('.')) return;
+        leftOperand.innerText += e.key;
+    } else {
+        if (rightOperand.innerText.includes('.')) return;
+        rightOperand.innerText += e.key;
+    }
+}
+
+function onKeyDown(e) { // Decides which function to run based on which key was pressed
+    if (e.key === '0' || e.key === '1' || e.key === '2' || e.key === '3' ||
+        e.key === '4' || e.key === '5' || e.key === '6' || e.key === '7' ||
+        e.key === '8' || e.key === '9') {
+        inputDigitKey(e);
+    } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        inputOperatorKey(e);
+    } else if (e.key === '.') {
+        inputDecimalKey(e);
+    } else if (e.key === '%') {
+        percent();
+    } else if (e.key === 'Backspace') {
+        backspace();
+    } else if (e.key === 'Enter' || e.key === '=') {
+        runExpression();
+    }
+}
+
+
+// OTHER OPERATOR FUNCTIONS
 function percent() { // Turns number into a percent decimal form
     if (!midOperator.innerText) {
         leftOperand.innerText = leftOperand.innerText / 100;
@@ -95,6 +221,8 @@ function plusMinus() { // Turns a positive integer negative and vice versa
     }
 }
 
+
+// CALCULATOR DISPLAY FUNCTIONS
 function clearDisplay() { // Clears display of all text
     leftOperand.innerText = '';
     midOperator.innerText = '';
@@ -120,17 +248,8 @@ function backspace() { // Delete latest character entered
     }
 }
 
-function inputDigit() { // Inputs digit onto display (Callback)
-    if (answer.innerText) {
-        clearDisplay();
-        leftOperand.innerText += this.innerText;
-    } else if (!midOperator.innerText) {
-        leftOperand.innerText += this.innerText;
-    } else {
-        rightOperand.innerText += this.innerText;
-    }
-}
 
+// SIDE FUNCTIONS
 function decimalCount(num) { // Counts the amount of decimals in a number
     const numStr = String(num);
     if (numStr.includes('.')) {
@@ -147,64 +266,6 @@ function roundDecimal(num) { // Will round decimals if more than 5 decimal place
 }
 
 
-function inputDecimal() { // Input decimal onto display (Callback)
-    if (!midOperator.innerText) {
-        if (leftOperand.innerText.includes('.')) return;
-        leftOperand.innerText += this.innerText;
-    } else {
-        if (rightOperand.innerText.includes('.')) return;
-        rightOperand.innerText += this.innerText;
-    }
-}
-
-function inputOperator() { // Inputs operator onto display (Callback)
-    if (answer.innerText) {
-        let newAnswer = answer.innerText
-        clearDisplay();
-        leftOperand.innerText = newAnswer;
-        midOperator.innerText += this.innerText;
-    } else if (!midOperator.innerText) {
-        midOperator.innerText += this.innerText;
-    } else if (midOperator.innerText && rightOperand.innerText) {
-        runExpression();
-        leftOperand.innerText = answer.innerText;
-        answer.innerText = '';
-        midOperator.innerText += this.innerText;
-    }
-}
-
-function runExpression() { // Runs expression that is on display
-    if (leftOperand.innerText && midOperator.innerText && rightOperand.innerText) {
-        switch (midOperator.innerText) {
-            case '+': {
-                let result = operate(parseFloat(leftOperand.innerText),
-                    parseFloat(rightOperand.innerText), add);
-                answer.innerText = roundDecimal(result);
-                break;
-            }
-            case '-': {
-                let result = operate(parseFloat(leftOperand.innerText),
-                    parseFloat(rightOperand.innerText), subtract);
-                answer.innerText = roundDecimal(result);
-                break;
-            }
-            case '*': {
-                let result = operate(parseFloat(leftOperand.innerText),
-                    parseFloat(rightOperand.innerText), multiply);
-                answer.innerText = roundDecimal(result);
-                break;
-            }
-            case '/': {
-                let result = operate(parseFloat(leftOperand.innerText),
-                    parseFloat(rightOperand.innerText), divide);
-                answer.innerText = roundDecimal(result);
-                break;
-            }
-        }
-    }
-}
-
-
 // EVENT LISTENERS
 digitBtns.forEach(button => button.addEventListener('click', inputDigit))
 operatorBtns.forEach(button => button.addEventListener('click', inputOperator))
@@ -218,65 +279,4 @@ reciprocalBtn.addEventListener('click', reciprocal);
 squareBtn.addEventListener('click', square);
 sqrtBtn.addEventListener('click', sqrt);
 plusMinusBtn.addEventListener('click', plusMinus);
-
-
-
-
-// KEY FUNCTIONALITY
-
 window.addEventListener('keydown', onKeyDown);
-
-function inputDigitKey(e) {
-    if (answer.innerText) {
-        clearDisplay();
-        leftOperand.innerText += parseFloat(e.key);
-    } else if (!midOperator.innerText) {
-        leftOperand.innerText += parseFloat(e.key);
-    } else {
-        rightOperand.innerText += parseFloat(e.key);
-    }
-}
-
-function inputOperatorKey(e) {
-    if (answer.innerText) {
-        let newAnswer = answer.innerText
-        clearDisplay();
-        leftOperand.innerText = newAnswer;
-        midOperator.innerText += e.key;
-    } else if (!midOperator.innerText) {
-        midOperator.innerText += e.key;
-    } else if (midOperator.innerText && rightOperand.innerText) {
-        runExpression();
-        leftOperand.innerText = answer.innerText;
-        answer.innerText = '';
-        midOperator.innerText += e.key;
-    }
-}
-
-function inputDecimalKey(e) {
-    if (!midOperator.innerText) {
-        if (leftOperand.innerText.includes('.')) return;
-        leftOperand.innerText += e.key;
-    } else {
-        if (rightOperand.innerText.includes('.')) return;
-        rightOperand.innerText += e.key;
-    }
-}
-
-function onKeyDown(e) {
-    if (e.key === '0' || e.key === '1' || e.key === '2' || e.key === '3' ||
-        e.key === '4' || e.key === '5' || e.key === '6' || e.key === '7' ||
-        e.key === '8' || e.key === '9') {
-        inputDigitKey(e);
-    } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-        inputOperatorKey(e);
-    } else if (e.key === '.') {
-        inputDecimalKey(e);
-    } else if (e.key === '%') {
-        percent();
-    } else if (e.key === 'Backspace') {
-        backspace();
-    } else if (e.key === 'Enter' || e.key === '=') {
-        runExpression();
-    }
-}
