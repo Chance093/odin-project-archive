@@ -62,6 +62,14 @@ button {
 }
 
 svg {
-    height: 21px;
-    width: 30px
+    height: 30px;
+    width: 30px;
+}
+
+.row1 svg {
+    height: 25px;
+}
+
+.percent button {
+    margin-bottom: 0px;
 }
