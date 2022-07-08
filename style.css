@@ -31,6 +31,8 @@ button {
     background-color: lightgray;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
+    border: none;
+    cursor: pointer;
 }
 
 .row6 button {
@@ -39,7 +41,7 @@ button {
 
 .display {
     height: 150px;
-    width: 407px;
+    width: 420px;
     border: 3px solid black;
     border-radius: 10px;
     background-color: rgb(109, 109, 109);
@@ -72,4 +74,15 @@ svg {
 
 .percent button {
     margin-bottom: 0px;
+}
+
+.row1,
+.row2,
+.row3,
+.row4,
+.row5,
+.row6 {
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
 }
