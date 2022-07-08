@@ -55,7 +55,7 @@ function reciprocal() { // Gives you the reciprocal value of a number
     }
 }
 
-function square() {
+function square() { // Outputs the squared value of an input
     if (!midOperator.innerText) {
         leftOperand.innerText = leftOperand.innerText ** 2;
     } else {
@@ -63,7 +63,7 @@ function square() {
     }
 }
 
-function sqrt() {
+function sqrt() { // Outputs the square root value of an input
     if (!midOperator.innerText) {
         leftOperand.innerText = Math.sqrt(leftOperand.innerText);
     } else {
@@ -71,7 +71,7 @@ function sqrt() {
     }
 }
 
-function plusMinus() {
+function plusMinus() { // Turns a positive integer negative and vice versa
     if (answer.innerText) {
         leftOperand.innerText = answer.innerText;
         answer.innerText = '';
