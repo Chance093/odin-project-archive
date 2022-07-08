@@ -60,3 +60,8 @@ button {
     font-size: 40px;
     padding-right: 15px;
 }
+
+svg {
+    height: 21px;
+    width: 30px
+}
