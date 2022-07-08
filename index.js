@@ -218,3 +218,65 @@ reciprocalBtn.addEventListener('click', reciprocal);
 squareBtn.addEventListener('click', square);
 sqrtBtn.addEventListener('click', sqrt);
 plusMinusBtn.addEventListener('click', plusMinus);
+
+
+
+
+// KEY FUNCTIONALITY
+
+window.addEventListener('keydown', onKeyDown);
+
+function inputDigitKey(e) {
+    if (answer.innerText) {
+        clearDisplay();
+        leftOperand.innerText += parseFloat(e.key);
+    } else if (!midOperator.innerText) {
+        leftOperand.innerText += parseFloat(e.key);
+    } else {
+        rightOperand.innerText += parseFloat(e.key);
+    }
+}
+
+function inputOperatorKey(e) {
+    if (answer.innerText) {
+        let newAnswer = answer.innerText
+        clearDisplay();
+        leftOperand.innerText = newAnswer;
+        midOperator.innerText += e.key;
+    } else if (!midOperator.innerText) {
+        midOperator.innerText += e.key;
+    } else if (midOperator.innerText && rightOperand.innerText) {
+        runExpression();
+        leftOperand.innerText = answer.innerText;
+        answer.innerText = '';
+        midOperator.innerText += e.key;
+    }
+}
+
+function inputDecimalKey(e) {
+    if (!midOperator.innerText) {
+        if (leftOperand.innerText.includes('.')) return;
+        leftOperand.innerText += e.key;
+    } else {
+        if (rightOperand.innerText.includes('.')) return;
+        rightOperand.innerText += e.key;
+    }
+}
+
+function onKeyDown(e) {
+    if (e.key === '0' || e.key === '1' || e.key === '2' || e.key === '3' ||
+        e.key === '4' || e.key === '5' || e.key === '6' || e.key === '7' ||
+        e.key === '8' || e.key === '9') {
+        inputDigitKey(e);
+    } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        inputOperatorKey(e);
+    } else if (e.key === '.') {
+        inputDecimalKey(e);
+    } else if (e.key === '%') {
+        percent();
+    } else if (e.key === 'Backspace') {
+        backspace();
+    } else if (e.key === 'Enter' || e.key === '=') {
+        runExpression();
+    }
+}
