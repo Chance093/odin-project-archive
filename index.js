@@ -143,8 +143,9 @@ function inputDecimal() { // Input decimal onto display (Callback)
 
 function inputOperator() { // Inputs operator onto display (Callback)
     if (answer.innerText) {
-        leftOperand.innerText = answer.innerText;
-        answer.innerText = '';
+        let newAnswer = answer.innerText
+        clearDisplay();
+        leftOperand.innerText = newAnswer;
         midOperator.innerText += this.innerText;
     } else if (!midOperator.innerText) {
         midOperator.innerText += this.innerText;
@@ -162,28 +163,24 @@ function runExpression() { // Runs expression that is on display
             case '+': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), add);
-                clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '-': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), subtract);
-                clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '*': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), multiply);
-                clearDisplay();
                 answer.innerText = result;
                 break;
             }
             case '/': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), divide);
-                clearDisplay();
                 answer.innerText = result;
                 break;
             }
