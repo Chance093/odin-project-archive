@@ -131,6 +131,22 @@ function inputDigit() { // Inputs digit onto display (Callback)
     }
 }
 
+function decimalCount(num) { // Counts the amount of decimals in a number
+    const numStr = String(num);
+    if (numStr.includes('.')) {
+        return numStr.split('.')[1].length;
+    }
+    return 0;
+}
+
+function roundDecimal(num) { // Will round decimals if more than 5 decimal places
+    if (decimalCount(num) > 5) {
+        return num.toFixed(5);
+    }
+    return num;
+}
+
+
 function inputDecimal() { // Input decimal onto display (Callback)
     if (!midOperator.innerText) {
         if (leftOperand.innerText.includes('.')) return;
@@ -163,25 +179,25 @@ function runExpression() { // Runs expression that is on display
             case '+': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), add);
-                answer.innerText = result;
+                answer.innerText = roundDecimal(result);
                 break;
             }
             case '-': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), subtract);
-                answer.innerText = result;
+                answer.innerText = roundDecimal(result);
                 break;
             }
             case '*': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), multiply);
-                answer.innerText = result;
+                answer.innerText = roundDecimal(result);
                 break;
             }
             case '/': {
                 let result = operate(parseFloat(leftOperand.innerText),
                     parseFloat(rightOperand.innerText), divide);
-                answer.innerText = result;
+                answer.innerText = roundDecimal(result);
                 break;
             }
         }
