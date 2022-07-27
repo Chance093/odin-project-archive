@@ -170,7 +170,8 @@ main {
 
 .logo div {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 30px;
 }
 
 .logo img {
