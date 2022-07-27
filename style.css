@@ -138,12 +138,14 @@ body {
 }
 
 section {
-    flex: 3;
-    background-color: blue;
+    flex: 4;
+    background-image: url(imgs/no-face.jpg);
+    background-size: cover;
+    background-position: bottom;
     height: 100vh;
 }
 
 main {
-    flex: 7;
-    background-color: purple;
+    flex: 6;
+    background-image: linear-gradient(black, rgb(114, 44, 114));
 }
