@@ -136,6 +136,7 @@ table {
 :root {
     color: white;
     font-family: 'Open Sans', sans-serif;
+    /* box-sizing: border-box; */
 }
 
 body {
@@ -184,6 +185,13 @@ main {
 
 header {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 2rem;
+    margin-left: 40px;
+    margin-right: 150px;
+    margin-bottom: 30px;
 }
 
 form {
@@ -218,7 +226,8 @@ input {
     width: 25vw;
     height: 30px;
     border-radius: 5px;
-    border: none;
+    border: 3px solid red;
+    outline: none;
 }
 
 label {
@@ -243,4 +252,8 @@ footer p {
 
 a {
     color: pink;
+}
+
+header p {
+    margin-bottom: 30px;
 }
