@@ -135,6 +135,7 @@ table {
 
 :root {
     color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -197,16 +198,30 @@ footer {
 .signup {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
+    align-items: flex-start;
+    height: 80%;
 }
 
 .signup div {
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
+}
+
+h3 {
+    font-size: 2rem;
+    margin: 40px;
+    margin-top: 30px;
 }
 
 input {
-    width: 400px;
+    width: 25vw;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+label {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
 }
