@@ -225,3 +225,22 @@ label {
     font-size: 1.3rem;
     margin-bottom: 8px;
 }
+
+button {
+    margin: 20px 40px;
+    padding: 10px 20px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+footer p {
+    margin-left: 40px;
+}
+
+a {
+    color: pink;
+}
