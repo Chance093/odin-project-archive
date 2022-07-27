@@ -156,6 +156,8 @@ section {
 main {
     flex: 6;
     background-image: linear-gradient(black, rgb(114, 44, 114));
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
@@ -176,4 +178,20 @@ main {
 
 .logo img {
     height: 100px;
+}
+
+header {
+    flex: 2;
+}
+
+form {
+    flex: 3;
+}
+
+footer {
+    flex: 1;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.1);
 }
