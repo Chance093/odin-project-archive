@@ -221,6 +221,7 @@ footer {
 
 h3 {
     font-size: 2rem;
+    font-weight: bold;
     margin: 40px;
     margin-top: 30px;
 }
@@ -244,12 +245,19 @@ label {
 button {
     margin: 20px 40px;
     padding: 10px 20px;
-    color: white;
+    color: lightskyblue;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
-    border: 3px solid white;
+    font-weight: bold;
+    border: 3px solid lightskyblue;
     border-radius: 10px;
     background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightskyblue;
+    color: rgb(114, 44, 114);
 }
 
 footer p {
@@ -257,7 +265,7 @@ footer p {
 }
 
 a {
-    color: pink;
+    color: lightskyblue;
 }
 
 header p {
