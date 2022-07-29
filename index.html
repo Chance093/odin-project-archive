@@ -49,11 +49,12 @@
                 </div>
                 <div>
                     <label for="pword">PASSWORD</label>
-                    <input type="password" id="pword" name="password" required>
+                    <input type="password" id="pword" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                        required>
                 </div>
                 <div>
                     <label for="conpass">CONFIRM PASSWORD</label>
-                    <input type="password" id="conpass" required>
+                    <input type="password" id="conpass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
                 </div>
             </div>
         </form>
