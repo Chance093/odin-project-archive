@@ -268,12 +268,12 @@ input:focus {
     border: 2px solid dodgerblue;
 }
 
-input:valid {
-    background: white url(imgs/icons8-checkmark.svg);
+/* input:valid {
+    background: url(imgs/icons8-checkmark.svg);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 5px 7px;
-}
+} */
 
 input[type="password"]:invalid:not(:placeholder-shown) {
     background: url(imgs/icons8-close.svg) rgb(248, 161, 161);
@@ -292,4 +292,22 @@ input[type="password"]:invalid:not(:placeholder-shown)+div:after {
     top: 5px;
     left: -40px;
     font-style: italic;
+}
+
+input+span {
+    position: relative;
+}
+
+input+span:after {
+    display: block;
+    position: absolute;
+    content: url(imgs/icons8-checkmark.svg);
+    top: -26px;
+    left: 7px;
+    opacity: 0;
+    transition: .2s;
+}
+
+input:valid+span:after {
+    opacity: 1;
 }
