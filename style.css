@@ -151,13 +151,6 @@ section {
     height: 100vh;
 }
 
-main {
-    flex: 6;
-    background-image: linear-gradient(black, rgb(114, 44, 114));
-    display: flex;
-    flex-direction: column;
-}
-
 .logo {
     height: 20vh;
     background-color: rgba(0, 0, 0, 0.7);
@@ -183,6 +176,13 @@ main {
     height: 100px;
 }
 
+main {
+    flex: 6;
+    background-image: linear-gradient(black, rgb(114, 44, 114));
+    display: flex;
+    flex-direction: column;
+}
+
 header {
     flex: 1.5;
     display: flex;
@@ -194,6 +194,10 @@ header {
     margin-bottom: 30px;
 }
 
+header p {
+    margin-bottom: 30px;
+}
+
 form {
     flex: 3;
     background-color: rgba(255, 255, 255, 0.1);
@@ -201,8 +205,11 @@ form {
     flex-direction: column;
 }
 
-footer {
-    flex: 1;
+h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 40px;
+    margin-top: 30px;
 }
 
 .signup {
@@ -219,11 +226,9 @@ footer {
     margin-left: 40px;
 }
 
-h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 40px;
-    margin-top: 30px;
+label {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
 }
 
 input {
@@ -235,41 +240,7 @@ input {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     padding-left: 30px;
-}
-
-label {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-}
-
-button {
-    margin: 20px 40px;
-    padding: 10px 20px;
-    color: lightskyblue;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
-    border: 3px solid lightskyblue;
-    border-radius: 10px;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: lightskyblue;
-    color: rgb(114, 44, 114);
-}
-
-footer p {
-    margin-left: 40px;
-}
-
-a {
-    color: lightskyblue;
-}
-
-header p {
-    margin-bottom: 30px;
+    transition: .3s;
 }
 
 input:focus {
@@ -290,7 +261,6 @@ input[type="password"]:invalid:not(:placeholder-shown)~div:after {
     top: 5px;
     left: -40px;
     font-style: italic;
-    transition: 1s;
 }
 
 input+span {
@@ -317,10 +287,37 @@ input+span:before {
     transition: .3s;
 }
 
-input:valid+span:after {
+input:valid+span:after,
+input[type="password"]:invalid:not(:placeholder-shown)+span:before {
     opacity: 1;
 }
 
-input[type="password"]:invalid:not(:placeholder-shown)+span:before {
-    opacity: 1;
+footer {
+    flex: 1;
+}
+
+button {
+    margin: 20px 40px;
+    padding: 10px 20px;
+    color: lightskyblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 3px solid lightskyblue;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightskyblue;
+    color: rgb(114, 44, 114);
+}
+
+footer p {
+    margin-left: 40px;
+}
+
+a {
+    color: lightskyblue;
 }
