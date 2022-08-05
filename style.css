@@ -149,4 +149,51 @@ body {
 .main {
     background-color: rgb(26, 26, 26);
     grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.main>.head-section {
+    flex: 1;
+    display: flex;
+}
+
+.main>.head-section>.header {
+    background-color: white;
+    margin: 30px;
+    flex: 1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.main>.head-section>.header>.title {
+    flex: 6;
+}
+
+.main>.head-section>.header>.author {
+    flex: 3;
+    border-left: 1px solid gray;
+}
+
+.main>.head-section>.header>.pages,
+.main>.head-section>.header>.status {
+    flex: 1;
+    border-left: 1px solid gray;
+}
+
+.main>.head-section>.add-button {
+    width: 100px;
+    border: 3px solid rgb(95, 252, 239);
+    border-radius: 8px;
+    background-color: rgb(26, 26, 26);
+    color: rgb(95, 252, 239);
+    margin: 30px;
+    margin-left: 0px;
+}
+
+.main>.book-list {
+    flex: 6;
+    background-color: green;
 }
