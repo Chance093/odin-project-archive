@@ -1,4 +1,8 @@
 const bookList = document.querySelector('.book-list');
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPage = document.querySelector('#page');
+const bookStatus = document.querySelector('#status');
 
 
 
@@ -14,15 +18,18 @@ let myLibrary = [{
     status: 'Not read',
 }];
 
-function Book(title, author, page, status) {
-    this.title = title;
+function Book(book, author, page, status) {
+    this.book = book;
     this.author = author;
     this.page = page;
     this.status = status;
 }
 
-function addBookToLibrary() {
-
+function addBookToLibrary() { // Takes info from field input and displays new book
+    bookList.innerHTML = '';
+    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPage.value, bookStatus.value);
+    myLibrary.push(newBook);
+    displayBooks();
 }
 
 function displayBooks() { // Loops through library array and displays all books
