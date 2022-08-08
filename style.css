@@ -138,7 +138,7 @@ table {
 body {
     display: grid;
     grid-template: 1fr / 400px 1fr;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .sidebar {
@@ -220,4 +220,31 @@ body {
     background-color: rgb(26, 26, 26);
     color: rgb(252, 95, 95);
     margin: 20px 30px 0px 0px;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    background-color: white;
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }

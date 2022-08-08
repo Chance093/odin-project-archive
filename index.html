@@ -12,11 +12,7 @@
 
 <body>
     <section class="sidebar">
-        <input type="text" id="title" placeholder="Book">
-        <input type="text" id="author" placeholder="Author">
-        <input type="number" id="page" placeholder="Pages">
-        <input type="text" id="status" placeholder="Read or not">
-        <button>Submit</button>
+
     </section>
     <main class="main">
         <header class="head-section">
@@ -28,28 +24,27 @@
             </div>
             <button class="add-button">+</button>
         </header>
-        <div class="book-list">
-            <!-- <div class="book-item">
-                <div class="book">
-                    <p class="title">Harry Potter</p>
-                    <p class="author">J.K. Rowling</p>
-                    <p class="pages">284</p>
-                    <p class="status">Read</p>
-                </div>
-                <button class="delete-button">X</button>
-            </div>
-            <div class="book-item">
-                <div class="book">
-                    <p class="title">Harry Potter</p>
-                    <p class="author">J.K. Rowling</p>
-                    <p class="pages">284</p>
-                    <p class="status">Read</p>
-                </div>
-                <button class="delete-button">X</button>
-            </div> -->
-
-        </div>
+        <div class="book-list"></div>
     </main>
+    <div class="modal-container">
+        <div class="modal">
+            <h1>Add A Book</h1>
+            <input type="text" id="title" placeholder="Book">
+            <input type="text" id="author" placeholder="Author">
+            <input type="number" id="page" placeholder="Pages">
+            <input type="text" id="status" placeholder="Read or not">
+            <button id="submit">Submit</button>
+        </div>
+    </div>
 </body>
 
 </html>
+<!-- <div class="book-item">
+    <div class="book">
+        <p class="title">Harry Potter</p>
+        <p class="author">J.K. Rowling</p>
+        <p class="pages">284</p>
+        <p class="status">Read</p>
+    </div>
+    <button class="delete-button">X</button>
+</div>-->
