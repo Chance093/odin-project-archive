@@ -33,8 +33,8 @@ function addBookToLibrary() { // Takes info from field input and displays new bo
     bookList.innerHTML = '';
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPage.value, bookStatus.value);
     myLibrary.push(newBook);
-    closeModal();
     displayBooks();
+    closeModal();
 }
 
 function deleteBook() { // Deletes a book on the click of a button
@@ -83,6 +83,14 @@ function displayModal() {
 
 function closeModal() {
     modalContainer.classList.remove('show');
+    resetInputs();
+}
+
+function resetInputs() {
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPage.value = '';
+    bookStatus.value = '';
 }
 
 displayBooks();
