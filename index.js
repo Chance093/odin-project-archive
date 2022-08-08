@@ -3,6 +3,10 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookPage = document.querySelector('#page');
 const bookStatus = document.querySelector('#status');
+const addButton = document.querySelector('.add-button');
+const submitButton = document.querySelector('#submit');
+const cancelButton = document.querySelector('#close');
+const modalContainer = document.querySelector('.modal-container');
 
 
 
@@ -29,6 +33,7 @@ function addBookToLibrary() { // Takes info from field input and displays new bo
     bookList.innerHTML = '';
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPage.value, bookStatus.value);
     myLibrary.push(newBook);
+    closeModal();
     displayBooks();
 }
 
@@ -72,4 +77,16 @@ function displayBooks() { // Loops through library array and displays all books
     }
 }
 
+function displayModal() {
+    modalContainer.classList.add('show');
+}
+
+function closeModal() {
+    modalContainer.classList.remove('show');
+}
+
 displayBooks();
+
+addButton.addEventListener('click', displayModal);
+cancelButton.addEventListener('click', closeModal);
+submitButton.addEventListener('click', addBookToLibrary);
