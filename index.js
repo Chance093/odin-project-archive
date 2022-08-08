@@ -18,7 +18,7 @@ let myLibrary = [{
     status: 'Not read',
 }];
 
-function Book(book, author, page, status) {
+function Book(book, author, page, status) { // Constructor Function for book object
     this.book = book;
     this.author = author;
     this.page = page;
@@ -32,8 +32,15 @@ function addBookToLibrary() { // Takes info from field input and displays new bo
     displayBooks();
 }
 
+function deleteBook() { // Deletes a book on the click of a button
+    let dataIndex = this.getAttribute('data-index');
+    myLibrary.splice(dataIndex, 1);
+    bookList.innerHTML = '';
+    displayBooks();
+}
+
 function displayBooks() { // Loops through library array and displays all books
-    for (let book of myLibrary) {
+    for (let [index, book] of myLibrary.entries()) {
         const pDiv = document.createElement('div');
         const cDiv = document.createElement('div');
         const pTitle = document.createElement('p');
@@ -48,6 +55,7 @@ function displayBooks() { // Loops through library array and displays all books
         pPages.classList.add('pages');
         pStatus.classList.add('status');
         dButton.classList.add('delete-button');
+        dButton.setAttribute('data-index', index);
         pTitle.textContent = book.book;
         pAuthor.textContent = book.author;
         pPages.textContent = book.page;
@@ -60,6 +68,7 @@ function displayBooks() { // Loops through library array and displays all books
         cDiv.appendChild(pAuthor);
         cDiv.appendChild(pPages);
         cDiv.appendChild(pStatus);
+        dButton.addEventListener('click', deleteBook);
     }
 }
 
