@@ -30,8 +30,11 @@ function Book(book, author, page, status) { // Constructor Function for book obj
 }
 
 function addBookToLibrary() { // Takes info from field input and displays new book
+    if (bookTitle.value === '' || bookAuthor.value === '' ||
+        bookPage.value === '' || bookStatus.value === '') return;
     bookList.innerHTML = '';
-    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPage.value, bookStatus.value);
+    const newBook = new Book(bookTitle.value, bookAuthor.value,
+        bookPage.value, bookStatus.value);
     myLibrary.push(newBook);
     displayBooks();
     closeModal();
