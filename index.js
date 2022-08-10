@@ -14,15 +14,10 @@ const bookUnread = document.querySelector('.unread');
 
 
 let myLibrary = [{
-    book: 'Lord of the Rings',
-    author: 'J.R.R. Tolkien',
-    page: 356,
-    status: 'Read',
-}, {
     book: 'The Hobbit',
     author: 'J.R.R. Tolkien',
-    page: 500,
-    status: 'Not read',
+    page: 310,
+    status: 'Not Read',
 }];
 
 function Book(book, author, page, status) { // Constructor Function for book object
