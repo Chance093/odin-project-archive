@@ -330,14 +330,69 @@ body {
 }
 
 .modal {
-    background-color: white;
-    width: 600px;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: 3px solid rgb(95, 252, 239);
+    height: 500px;
+    width: 400px;
     max-width: 100%;
     padding: 30px 50px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.modal>h1 {
+    font-size: 2rem;
+}
+
+.modal>input {
+    width: 90%;
+    height: 50px;
+    background-color: rgb(26, 26, 26);
+    border: 2px solid rgba(95, 252, 239, 0.5);
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7rem;
+    padding-left: 20px;
+    color: white;
+}
+
+.modal>.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.modal>.buttons>button {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(26, 26, 26);
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7rem;
+}
+
+.modal>.buttons>#close {
+    border: 3px solid rgb(252, 95, 95);
+    color: rgb(252, 95, 95);
+}
+
+.modal>.buttons>#close:hover {
+    background-color: rgb(252, 95, 95);
+    color: rgb(26, 26, 26);
+    font-weight: bold;
+}
+
+.modal>.buttons>#submit {
+    border: 3px solid rgb(95, 252, 239);
+    color: rgb(95, 252, 239);
+}
+
+.modal>.buttons>#submit:hover {
+    background-color: rgb(95, 252, 239);
+    color: rgb(26, 26, 26);
+    font-weight: bold;
 }
