@@ -133,6 +133,7 @@ table {
 
 :root {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -149,6 +150,7 @@ body {
     gap: 100px;
     font-size: 1.7rem;
     color: rgb(26, 26, 26);
+    padding: 30px;
 }
 
 .sidebar>h1 {
