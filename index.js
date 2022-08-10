@@ -7,6 +7,9 @@ const addButton = document.querySelector('.add-button');
 const submitButton = document.querySelector('#submit');
 const cancelButton = document.querySelector('#close');
 const modalContainer = document.querySelector('.modal-container');
+const bookTotal = document.querySelector('.total');
+const bookRead = document.querySelector('.read');
+const bookUnread = document.querySelector('.unread');
 
 
 
@@ -78,6 +81,19 @@ function displayBooks() { // Loops through library array and displays all books
         cDiv.appendChild(pStatus);
         dButton.addEventListener('click', deleteBook);
     }
+    displayStats();
+}
+
+function displayStats() {
+    let readBooks = myLibrary.filter(book => {
+        if (book.status.toLowerCase() === 'read') return true;
+    })
+    let unreadBooks = myLibrary.filter(book => {
+        if (book.status.toLowerCase() === 'not read') return true;
+    })
+    bookTotal.textContent = `${myLibrary.length}`;
+    bookRead.textContent = `${readBooks.length}`;
+    bookUnread.textContent = `${unreadBooks.length}`;
 }
 
 function displayModal() {
