@@ -153,6 +153,10 @@ body {
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
-.gameboard>div {
+.gameboard>.cell {
     border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
 }

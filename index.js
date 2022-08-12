@@ -1,6 +1,13 @@
+
+
 const Gameboard = (function () {
-    const gameboard = [['X', 'O', 'X'], ['X', 'O', 'X'], ['X', 'O', 'X']]
-    const displayGameboard = () => console.table(gameboard);
+    const gameboard = ['X', 'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'];
+    const displayGameboard = () => {
+        gameboard.forEach((element, index) => {
+            let cell = document.querySelector(`.cell${index}`)
+            cell.textContent = element;
+        })
+    };
     return { displayGameboard };
 })();
 
