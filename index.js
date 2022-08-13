@@ -1,23 +1,33 @@
+const cells = document.querySelectorAll('.cell');
 
+const Gameboard = (function () { // Gameboard Module
 
-const Gameboard = (function () {
-    const gameboard = ['X', 'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'];
-    const displayGameboard = () => {
+    const gameboard = ['', '', '', '', '', '', '', '', ''];
+
+    const displayGameboard = () => { // Displays X and O on board
         gameboard.forEach((element, index) => {
             let cell = document.querySelector(`.cell${index}`)
             cell.textContent = element;
         })
     };
+
     return { displayGameboard };
+
 })();
 
 Gameboard.displayGameboard();
 
-const Player = function (name, age) {
-    const displayName = () => console.log(name);
-    const displayAge = () => console.log(age);
-    return { displayName, displayAge };
+const Player = function () {
+    const xo = 'X';
+
+    const makeMove = (e) => {
+        e.target.innerText = xo;
+    }
+
+    return { makeMove };
 }
 
-const joe = Player('Joe', 40);
-const jim = Player('Jim', 23);
+const chance = Player('chance', 23);
+
+cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
+
