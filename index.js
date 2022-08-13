@@ -55,8 +55,10 @@ Gameboard.displayGameboard();
 const Player = function () {
     let x_or_o = 'X';
 
-    const makeMove = (e) => {
-        e.target.innerText = x_or_o;
+    const makeMove = (e) => { // Will place X or O on click
+        if (!e.target.innerText) {
+            e.target.innerText = x_or_o;
+        }
         Gameboard.updateGameboard();
         Gameboard.checkWinner();
         switchPlayer();
