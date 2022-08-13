@@ -11,23 +11,33 @@ const Gameboard = (function () { // Gameboard Module
         })
     };
 
-    return { displayGameboard };
+    const updateGameboard = () => { // Updates gameboard array after every move
+        gameboard.forEach((element, index) => {
+            let cell = document.querySelector(`.cell${index}`)
+            if (element !== cell.textContent) {
+                gameboard.splice(index, 1, cell.textContent);
+            }
+        })
+    }
+
+    return { displayGameboard, updateGameboard };
 
 })();
 
 Gameboard.displayGameboard();
 
-const Player = function () {
-    const xo = 'X';
+const Player = function (xo) {
+    const x_or_o = xo;
 
     const makeMove = (e) => {
-        e.target.innerText = xo;
+        e.target.innerText = x_or_o;
+        Gameboard.updateGameboard();
     }
 
     return { makeMove };
 }
 
-const chance = Player('chance', 23);
+const chance = Player('X');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
 
