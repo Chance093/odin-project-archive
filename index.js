@@ -20,18 +20,31 @@ const Gameboard = (function () { // Gameboard Module
         })
     }
 
+    const checkWinner = () => {
+
+    }
+
     return { displayGameboard, updateGameboard };
 
 })();
 
 Gameboard.displayGameboard();
 
-const Player = function (xo) {
-    const x_or_o = xo;
+const Player = function () {
+    let x_or_o = 'X';
 
     const makeMove = (e) => {
         e.target.innerText = x_or_o;
         Gameboard.updateGameboard();
+        switchPlayer();
+    }
+
+    const switchPlayer = () => {
+        if (x_or_o === 'X') {
+            x_or_o = 'O';
+        } else {
+            x_or_o = 'X';
+        }
     }
 
     return { makeMove };
