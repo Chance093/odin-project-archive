@@ -4,23 +4,15 @@ const Gameboard = (function () { // Gameboard Module
 
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
-    const displayGameboard = () => { // Displays X and O on board
+    const updateGameboard = () => { // Displays gameboard array on gameboard
         gameboard.forEach((element, index) => {
             let cell = document.querySelector(`.cell${index}`)
             cell.textContent = element;
         })
+        _checkWinner();
     };
 
-    const updateGameboard = () => { // Updates gameboard array after every move
-        gameboard.forEach((element, index) => {
-            let cell = document.querySelector(`.cell${index}`)
-            if (element !== cell.textContent) {
-                gameboard.splice(index, 1, cell.textContent);
-            }
-        })
-    }
-
-    const checkWinner = () => { // Checks if anyone has won after every move
+    const _checkWinner = () => { // Checks if anyone has won after every move
         if ((gameboard[0] === 'X' && gameboard[1] === 'X' && gameboard[2] === 'X') ||
             (gameboard[3] === 'X' && gameboard[4] === 'X' && gameboard[5] === 'X') ||
             (gameboard[6] === 'X' && gameboard[7] === 'X' && gameboard[8] === 'X') ||
@@ -46,36 +38,24 @@ const Gameboard = (function () { // Gameboard Module
         }
     }
 
-    return { displayGameboard, updateGameboard, checkWinner };
+    return { gameboard, updateGameboard };
 
 })();
 
-Gameboard.displayGameboard();
+const Player = function (name, xo) { // Player Factory Function
+    let x_or_o = xo;
 
-const Player = function () {
-    let x_or_o = 'X';
-
-    const makeMove = (e) => { // Will place X or O on click
-        if (!e.target.innerText) {
-            e.target.innerText = x_or_o;
-        }
+    const makeMove = (e) => { // Updates gameboard array
+        const index = e.target.dataset.cellIndex;
+        Gameboard.gameboard.splice(index, 1, x_or_o);
         Gameboard.updateGameboard();
-        Gameboard.checkWinner();
-        switchPlayer();
-    }
-
-    const switchPlayer = () => {
-        if (x_or_o === 'X') {
-            x_or_o = 'O';
-        } else {
-            x_or_o = 'X';
-        }
     }
 
     return { makeMove };
 }
 
-const chance = Player('X');
+const chance = Player('Chance', 'X');
+const enemy = Player('Enemy', 'O');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
 
