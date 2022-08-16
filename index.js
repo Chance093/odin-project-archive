@@ -43,21 +43,29 @@ const Gameboard = (function () { // Gameboard Module
 })();
 
 const Player = function (name, xo) { // Player Factory Function
-    let x_or_o = xo;
+    let _x_or_o = xo;
 
-    let player1Turn = true;
+    let _player1Turn = true;
+
+    const _checkPlayerTurn = () => { // Checks if turn is player 1 or player 2
+        if (_player1Turn) {
+            _x_or_o = 'O';
+            _player1Turn = false;
+        } else {
+            _x_or_o = 'X';
+            _player1Turn = true;
+        }
+    }
 
     const makeMove = (e) => { // Updates gameboard array
         const index = e.target.dataset.cellIndex;
-        Gameboard.gameboard.splice(index, 1, x_or_o);
-        Gameboard.updateGameboard();
-        if (player1Turn) {
-            x_or_o = 'O';
-            player1Turn = false;
+        if (Gameboard.gameboard[index]) {
+            return;
         } else {
-            x_or_o = 'X';
-            player1Turn = true;
+            Gameboard.gameboard.splice(index, 1, _x_or_o);
         }
+        Gameboard.updateGameboard();
+        _checkPlayerTurn();
     }
 
     return { makeMove };
