@@ -45,17 +45,25 @@ const Gameboard = (function () { // Gameboard Module
 const Player = function (name, xo) { // Player Factory Function
     let x_or_o = xo;
 
+    let player1Turn = true;
+
     const makeMove = (e) => { // Updates gameboard array
         const index = e.target.dataset.cellIndex;
         Gameboard.gameboard.splice(index, 1, x_or_o);
         Gameboard.updateGameboard();
+        if (player1Turn) {
+            x_or_o = 'O';
+            player1Turn = false;
+        } else {
+            x_or_o = 'X';
+            player1Turn = true;
+        }
     }
 
     return { makeMove };
 }
 
 const chance = Player('Chance', 'X');
-const enemy = Player('Enemy', 'O');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
 
