@@ -43,6 +43,7 @@ const Gameboard = (function () { // Gameboard Module
 })();
 
 const Player = function (name, xo) { // Player Factory Function
+
     let _x_or_o = xo;
 
     let _player1Turn = true;
@@ -74,4 +75,3 @@ const Player = function (name, xo) { // Player Factory Function
 const chance = Player('Chance', 'X');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
-
