@@ -6,9 +6,36 @@ const Gameboard = (function () { // Gameboard Module
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
     const playPVP = () => {
-        // const modal = document.querySelector('.modal');
-        // modal.innerHTML = '';
-        console.log('yo')
+        const modalContainer = document.querySelector('.start');
+        modalContainer.innerHTML = '';
+        const modalDiv = document.createElement('div');
+        const head = document.createElement('h1');
+        const p1Input = document.createElement('input');
+        const p2Input = document.createElement('input');
+        const buttonDiv = document.createElement('div');
+        const backButton = document.createElement('button');
+        const playButton = document.createElement('button');
+        modalDiv.classList.add('modal');
+        modalDiv.classList.add('inputs');
+        p1Input.setAttribute('type', 'text');
+        p1Input.setAttribute('placeholder', 'Player 1 Name');
+        p1Input.setAttribute('id', 'p1');
+        p2Input.setAttribute('type', 'text');
+        p2Input.setAttribute('placeholder', 'Player 2 Name');
+        p2Input.setAttribute('id', 'p2');
+        buttonDiv.classList.add('buttons');
+        backButton.setAttribute('id', 'back');
+        playButton.setAttribute('id', 'play');
+        head.textContent = 'Choose Your Gamemode:';
+        backButton.textContent = 'Back';
+        playButton.textContent = 'Play';
+        buttonDiv.appendChild(backButton);
+        buttonDiv.appendChild(playButton);
+        modalDiv.appendChild(head);
+        modalDiv.appendChild(p1Input);
+        modalDiv.appendChild(p2Input);
+        modalDiv.appendChild(buttonDiv);
+        modalContainer.appendChild(modalDiv);
     }
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
@@ -82,4 +109,4 @@ const Player = function (name, xo) { // Player Factory Function
 const chance = Player('Chance', 'X');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
-// pvpButton.addEventListener('click', Gameboard.playPVP);
+pvpButton.addEventListener('click', Gameboard.playPVP);
