@@ -1,8 +1,15 @@
 const cells = document.querySelectorAll('.cell');
+const pvpButton = document.querySelector('#pvp');
 
 const Gameboard = (function () { // Gameboard Module
 
     const gameboard = ['', '', '', '', '', '', '', '', ''];
+
+    const playPVP = () => {
+        // const modal = document.querySelector('.modal');
+        // modal.innerHTML = '';
+        console.log('yo')
+    }
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
         gameboard.forEach((element, index) => {
@@ -38,7 +45,7 @@ const Gameboard = (function () { // Gameboard Module
         }
     }
 
-    return { gameboard, updateGameboard };
+    return { gameboard, updateGameboard, playPVP };
 
 })();
 
@@ -75,3 +82,4 @@ const Player = function (name, xo) { // Player Factory Function
 const chance = Player('Chance', 'X');
 
 cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
+// pvpButton.addEventListener('click', Gameboard.playPVP);

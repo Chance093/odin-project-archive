@@ -12,11 +12,20 @@
 
 <body>
     <div class="start modal-container show">
-        <div class="modal">
+        <!-- <div class="modal buttons">
             <h1>Choose Your Gamemode:</h1>
-            <button>Player Vs. Player</button>
+            <button id="pvp">Player Vs. Player</button>
             <div class="linebreak"></div>
-            <button>Player Vs. A.I.</button>
+            <button id="pve">Player Vs. A.I.</button>
+        </div> -->
+        <div class="modal inputs">
+            <h1>Choose Your Gamemode:</h1>
+            <input type="text" placeholder="Player 1 Name" id="p1">
+            <input type="text" placeholder="Player 2 Name" id="p2">
+            <div class="buttons">
+                <button id="back">Back</button>
+                <button id="play">Play</button>
+            </div>
         </div>
     </div>
     <div class="gameboard hide">
