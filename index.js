@@ -5,7 +5,7 @@ const Gameboard = (function () { // Gameboard Module
 
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
-    const playPVP = () => {
+    const createPVPDOM = () => {
         const modalContainer = document.querySelector('.start');
         modalContainer.innerHTML = '';
         const modalDiv = document.createElement('div');
@@ -36,6 +36,13 @@ const Gameboard = (function () { // Gameboard Module
         modalDiv.appendChild(p2Input);
         modalDiv.appendChild(buttonDiv);
         modalContainer.appendChild(modalDiv);
+        const playPVP = () => {
+            const player1 = Player(p1Input.value, 'X');
+            const modalContainer = document.querySelector('.start');
+            modalContainer.classList.remove('show');
+            cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
+        }
+        playButton.addEventListener('click', playPVP);
     }
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
@@ -72,7 +79,7 @@ const Gameboard = (function () { // Gameboard Module
         }
     }
 
-    return { gameboard, updateGameboard, playPVP };
+    return { gameboard, updateGameboard, createPVPDOM };
 
 })();
 
@@ -106,7 +113,4 @@ const Player = function (name, xo) { // Player Factory Function
     return { makeMove };
 }
 
-const chance = Player('Chance', 'X');
-
-cells.forEach(cell => cell.addEventListener('click', chance.makeMove));
-pvpButton.addEventListener('click', Gameboard.playPVP);
+pvpButton.addEventListener('click', Gameboard.createPVPDOM);
