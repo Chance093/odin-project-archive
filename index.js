@@ -1,11 +1,9 @@
 const cells = document.querySelectorAll('.cell');
 const pvpButton = document.querySelector('#pvp');
 
-const Gameboard = (function () { // Gameboard Module
+const GameStart = (function () { // GameStart Module
 
-    const gameboard = ['', '', '', '', '', '', '', '', ''];
-
-    const createPVPDOM = () => {
+    const createPVPDOM = () => { // Creates player name inputs
         const modalContainer = document.querySelector('.start');
         modalContainer.innerHTML = '';
         const modalDiv = document.createElement('div');
@@ -36,17 +34,17 @@ const Gameboard = (function () { // Gameboard Module
         modalDiv.appendChild(p2Input);
         modalDiv.appendChild(buttonDiv);
         modalContainer.appendChild(modalDiv);
-        const playPVP = () => {
+        const _playPVP = () => { // Hides modal and displays board
             const player1 = Player(p1Input.value, 'X');
             const modalContainer = document.querySelector('.start');
             modalContainer.classList.remove('show');
             cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
         }
-        playButton.addEventListener('click', playPVP);
-        backButton.addEventListener('click', backToMain);
+        playButton.addEventListener('click', _playPVP);
+        backButton.addEventListener('click', _backToMain);
     }
 
-    const backToMain = () => {
+    const _backToMain = () => { // Goes back to very start of website
         const modalContainer = document.querySelector('.start');
         modalContainer.innerHTML = '';
         const modalDiv = document.createElement('div');
@@ -67,8 +65,16 @@ const Gameboard = (function () { // Gameboard Module
         modalDiv.appendChild(linebreak);
         modalDiv.appendChild(pveButton);
         modalContainer.appendChild(modalDiv);
-        pvpButton.addEventListener('click', Gameboard.createPVPDOM);
+        pvpButton.addEventListener('click', createPVPDOM);
     }
+
+    return { createPVPDOM };
+
+})();
+
+const Gameboard = (function () { // Gameboard Module
+
+    const gameboard = ['', '', '', '', '', '', '', '', ''];
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
         gameboard.forEach((element, index) => {
@@ -104,7 +110,7 @@ const Gameboard = (function () { // Gameboard Module
         }
     }
 
-    return { gameboard, updateGameboard, createPVPDOM };
+    return { gameboard, updateGameboard };
 
 })();
 
@@ -138,4 +144,4 @@ const Player = function (name, xo) { // Player Factory Function
     return { makeMove };
 }
 
-pvpButton.addEventListener('click', Gameboard.createPVPDOM);
+pvpButton.addEventListener('click', GameStart.createPVPDOM);
