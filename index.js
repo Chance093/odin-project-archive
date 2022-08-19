@@ -43,6 +43,31 @@ const Gameboard = (function () { // Gameboard Module
             cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
         }
         playButton.addEventListener('click', playPVP);
+        backButton.addEventListener('click', backToMain);
+    }
+
+    const backToMain = () => {
+        const modalContainer = document.querySelector('.start');
+        modalContainer.innerHTML = '';
+        const modalDiv = document.createElement('div');
+        const head = document.createElement('h1');
+        const pvpButton = document.createElement('button');
+        const pveButton = document.createElement('button');
+        const linebreak = document.createElement('div');
+        modalDiv.classList.add('modal');
+        modalDiv.classList.add('buttons');
+        pvpButton.setAttribute('id', 'pvp');
+        pveButton.setAttribute('id', 'pve');
+        linebreak.classList.add('linebreak');
+        head.textContent = 'Choose Your Gamemode:';
+        pvpButton.textContent = 'Player Vs. Player';
+        pveButton.textContent = 'Player Vs. A.I.';
+        modalDiv.appendChild(head);
+        modalDiv.appendChild(pvpButton);
+        modalDiv.appendChild(linebreak);
+        modalDiv.appendChild(pveButton);
+        modalContainer.appendChild(modalDiv);
+        pvpButton.addEventListener('click', Gameboard.createPVPDOM);
     }
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
