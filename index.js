@@ -35,6 +35,7 @@ const GameStart = (function () { // GameStart Module
         modalDiv.appendChild(buttonDiv);
         modalContainer.appendChild(modalDiv);
         const _playPVP = () => { // Hides modal and displays board
+            if (!p1Input.value || !p2Input.value) return
             const player1 = Player(p1Input.value, 'X');
             const modalContainer = document.querySelector('.start');
             modalContainer.classList.remove('show');
