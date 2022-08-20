@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="start modal-container">
+    <div class="start modal-container show">
         <div class="modal buttons">
             <h1>Choose Your Gamemode:</h1>
             <button id="pvp">Player Vs. Player</button>
@@ -39,9 +39,9 @@
         <div class="cell cell7" data-cell-index="7"></div>
         <div class="cell cell8" data-cell-index="8"></div>
     </div>
-    <div class="end modal-container show">
+    <div class="end modal-container">
         <div class="modal">
-            <h1>Player 1 is the Winner!</h1>
+            <h1 class="winner"></h1>
             <div class="buttons">
                 <button id="close">Close</button>
                 <button id="play2">Play Again</button>

@@ -36,7 +36,8 @@ const GameStart = (function () { // GameStart Module
         modalContainer.appendChild(modalDiv);
         const _playPVP = () => { // Hides modal and displays board
             if (!p1Input.value || !p2Input.value) return
-            const player1 = Player(p1Input.value, 'X');
+            const player1 = Player(p1Input.value, 'X', true);
+            const player2 = Player(p2Input.value, 'O', false);
             const modalContainer = document.querySelector('.start');
             modalContainer.classList.remove('show');
             cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
@@ -94,7 +95,7 @@ const Gameboard = (function () { // Gameboard Module
             (gameboard[2] === 'X' && gameboard[5] === 'X' && gameboard[8] === 'X') ||
             (gameboard[0] === 'X' && gameboard[4] === 'X' && gameboard[8] === 'X') ||
             (gameboard[2] === 'X' && gameboard[4] === 'X' && gameboard[6] === 'X')) {
-            console.log('Player 1 wins');
+            GameEnd.player1Winner();
         } else if ((gameboard[0] === 'O' && gameboard[1] === 'O' && gameboard[2] === 'O') ||
             (gameboard[3] === 'O' && gameboard[4] === 'O' && gameboard[5] === 'O') ||
             (gameboard[6] === 'O' && gameboard[7] === 'O' && gameboard[8] === 'O') ||
@@ -103,11 +104,11 @@ const Gameboard = (function () { // Gameboard Module
             (gameboard[2] === 'O' && gameboard[5] === 'O' && gameboard[8] === 'O') ||
             (gameboard[0] === 'O' && gameboard[4] === 'O' && gameboard[8] === 'O') ||
             (gameboard[2] === 'O' && gameboard[4] === 'O' && gameboard[6] === 'O')) {
-            console.log('Player 2 wins');
+            GameEnd.player2Winner();
         } else if (gameboard[0] && gameboard[1] && gameboard[2] &&
             gameboard[3] && gameboard[4] && gameboard[5] &&
             gameboard[6] && gameboard[7] && gameboard[8]) {
-            console.log('Tie Game');
+            GameEnd.tieGame();
         }
     }
 
@@ -115,19 +116,46 @@ const Gameboard = (function () { // Gameboard Module
 
 })();
 
-const Player = function (name, xo) { // Player Factory Function
+const GameEnd = (function () {
+
+    player1Winner = () => {
+        const modalContainer = document.querySelector('.end');
+        const head = document.querySelector('.winner');
+        modalContainer.classList.add('show');
+        head.textContent = `${GameStart.p1Name} is the Winner!`;
+    }
+
+    player2Winner = () => {
+        const modalContainer = document.querySelector('.end');
+        const head = document.querySelector('.winner');
+        modalContainer.classList.add('show');
+        head.textContent = `${GameStart.p2Name} is the Winner!`;
+    }
+
+    tieGame = () => {
+        const modalContainer = document.querySelector('.end');
+        const head = document.querySelector('.winner');
+        modalContainer.classList.add('show');
+        head.textContent = 'Tie Game!';
+    }
+
+    return { player1Winner, player2Winner, tieGame };
+
+})();
+
+const Player = function (name, xo, playerturn) { // Player Factory Function
 
     let _x_or_o = xo;
 
-    let _player1Turn = true;
+    const getName = () => name;
 
-    const _checkPlayerTurn = () => { // Checks if turn is player 1 or player 2
-        if (_player1Turn) {
-            _x_or_o = 'O';
-            _player1Turn = false;
+    let _playerTurn = playerturn;
+
+    const updatePlayerTurn = () => { // Checks if turn is player 1 or player 2
+        if (_playerTurn) {
+            _playerTurn = false;
         } else {
-            _x_or_o = 'X';
-            _player1Turn = true;
+            _playerTurn = true;
         }
     }
 
@@ -139,10 +167,10 @@ const Player = function (name, xo) { // Player Factory Function
             Gameboard.gameboard.splice(index, 1, _x_or_o);
         }
         Gameboard.updateGameboard();
-        _checkPlayerTurn();
+        updatePlayerTurn();
     }
 
-    return { makeMove };
+    return { makeMove, updatePlayerTurn };
 }
 
 pvpButton.addEventListener('click', GameStart.createPVPDOM);
