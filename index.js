@@ -1,109 +1,4 @@
 const cells = document.querySelectorAll('.cell');
-const pvpButton = document.querySelector('#pvp');
-
-// const GameStart = (function () { // GameStart Module
-
-//     const createPVPDOM = () => { // Creates player name inputs
-//         const modalContainer = document.querySelector('.start');
-//         modalContainer.innerHTML = '';
-//         const modalDiv = document.createElement('div');
-//         const head = document.createElement('h1');
-//         const p1Input = document.createElement('input');
-//         const p2Input = document.createElement('input');
-//         const buttonDiv = document.createElement('div');
-//         const backButton = document.createElement('button');
-//         const playButton = document.createElement('button');
-//         modalDiv.classList.add('modal');
-//         modalDiv.classList.add('inputs');
-//         p1Input.setAttribute('type', 'text');
-//         p1Input.setAttribute('placeholder', 'Player 1 Name');
-//         p1Input.setAttribute('id', 'p1');
-//         p2Input.setAttribute('type', 'text');
-//         p2Input.setAttribute('placeholder', 'Player 2 Name');
-//         p2Input.setAttribute('id', 'p2');
-//         buttonDiv.classList.add('buttons');
-//         backButton.setAttribute('id', 'back');
-//         playButton.setAttribute('id', 'play');
-//         head.textContent = 'Choose Your Gamemode:';
-//         backButton.textContent = 'Back';
-//         playButton.textContent = 'Play';
-//         buttonDiv.appendChild(backButton);
-//         buttonDiv.appendChild(playButton);
-//         modalDiv.appendChild(head);
-//         modalDiv.appendChild(p1Input);   
-//         modalDiv.appendChild(p2Input);
-//         modalDiv.appendChild(buttonDiv);
-//         modalContainer.appendChild(modalDiv);
-
-//         playButton.addEventListener('click', () => {
-//             _playPVP(p1Input.value, p2Input.value);
-//         });
-//         backButton.addEventListener('click', _backToMainDOM);
-//     }
-
-//     const _playPVP = (p1name, p2name) => { // Hides modal and displays board
-//         if (!p1name || !p2name) return
-//         const player1 = Player(p1name, 'X', true);
-//         const player2 = Player(p2name, 'O', false);
-//         const modalContainer = document.querySelector('.start');
-//         modalContainer.classList.remove('show');
-//         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
-//     }
-
-//     const _backToMainDOM = () => { // Goes back to very start of website
-//         const modalContainer = document.querySelector('.start');
-//         modalContainer.innerHTML = '';
-//         const modalDiv = document.createElement('div');
-//         const head = document.createElement('h1');
-//         const pvpButton = document.createElement('button');
-//         const pveButton = document.createElement('button');
-//         const linebreak = document.createElement('div');
-//         modalDiv.classList.add('modal');
-//         modalDiv.classList.add('buttons');
-//         pvpButton.setAttribute('id', 'pvp');
-//         pveButton.setAttribute('id', 'pve');
-//         linebreak.classList.add('linebreak');
-//         head.textContent = 'Choose Your Gamemode:';
-//         pvpButton.textContent = 'Player Vs. Player';
-//         pveButton.textContent = 'Player Vs. A.I.';
-//         modalDiv.appendChild(head);
-//         modalDiv.appendChild(pvpButton);
-//         modalDiv.appendChild(linebreak);
-//         modalDiv.appendChild(pveButton);
-//         modalContainer.appendChild(modalDiv);
-//         pvpButton.addEventListener('click', createPVPDOM);
-//     }
-
-//     return { createPVPDOM };
-
-// })();
-
-// const GameEnd = (function () {
-
-//     player1Winner = () => {
-//         const modalContainer = document.querySelector('.end');
-//         const head = document.querySelector('.winner');
-//         modalContainer.classList.add('show');
-//         head.textContent = `${GameStart.p1Name} is the Winner!`;
-//     }
-
-//     player2Winner = () => {
-//         const modalContainer = document.querySelector('.end');
-//         const head = document.querySelector('.winner');
-//         modalContainer.classList.add('show');
-//         head.textContent = `${GameStart.p2Name} is the Winner!`;
-//     }
-
-//     tieGame = () => {
-//         const modalContainer = document.querySelector('.end');
-//         const head = document.querySelector('.winner');
-//         modalContainer.classList.add('show');
-//         head.textContent = 'Tie Game!';
-//     }
-
-//     return { player1Winner, player2Winner, tieGame };
-
-// })();
 
 const Gameboard = (function () { // Gameboard Module
 
@@ -147,19 +42,17 @@ const Gameboard = (function () { // Gameboard Module
 
 })();
 
-const Player = function (name, xo, playerturn) { // Player Factory Function
+const Player = function (name, xo) { // Player Factory Function
 
-    let _x_or_o = xo;
+    let _xo = xo;
 
-    const getName = () => name;
-
-    let _playerTurn = playerturn;
-
-    const updatePlayerTurn = () => { // Checks if turn is player 1 or player 2
-        if (_playerTurn) {
-            _playerTurn = false;
+    const _switchTurn = () => { // Switches player turn after each move
+        if (_xo === 'X') {
+            cells.forEach(cell => cell.removeEventListener('click', player1.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', player2.makeMove));
         } else {
-            _playerTurn = true;
+            cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
         }
     }
 
@@ -168,16 +61,16 @@ const Player = function (name, xo, playerturn) { // Player Factory Function
         if (Gameboard.gameboard[index]) {
             return;
         } else {
-            Gameboard.gameboard.splice(index, 1, _x_or_o);
+            Gameboard.gameboard.splice(index, 1, _xo);
         }
         Gameboard.updateGameboard();
-        updatePlayerTurn();
+        _switchTurn();
     }
 
-    return { makeMove, updatePlayerTurn };
+    return { makeMove };
 }
 
-const player1 = Player('Chance', 'X', true);
-const player2 = Player('Ryan', 'O', false)
+const player1 = Player('Chance', 'X');
+const player2 = Player('Ryan', 'O');
 
 cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
