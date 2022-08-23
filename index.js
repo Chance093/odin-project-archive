@@ -37,6 +37,7 @@ const GameStart = (function () {
     const _resetGameboard = () => {
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
+        cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
     return { fillMenu };
@@ -47,9 +48,24 @@ const GameStart = (function () {
 
 const GameEnd = (function () {
 
+    const _goBack = () => {
+        const winnerModal = document.querySelector('.game-end');
+        winnerModal.classList.remove('show');
+    }
+
+    const _resetGameboard = () => {
+        _goBack();
+        Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
+        Gameboard.updateGameboard();
+    }
+
     const _player1Wins = () => {
         const winnerModal = document.querySelector('.game-end');
         const announcement = document.querySelector('.announcement');
+        const backButton = document.querySelector('.back');
+        const resetButton = document.querySelector('.reset2');
+        resetButton.addEventListener('click', _resetGameboard);
+        backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
         announcement.textContent = `${player1.getName()} is the Winner!`;
     }
@@ -57,6 +73,10 @@ const GameEnd = (function () {
     const _player2Wins = () => {
         const winnerModal = document.querySelector('.game-end');
         const announcement = document.querySelector('.announcement');
+        const backButton = document.querySelector('.back');
+        const resetButton = document.querySelector('.reset2');
+        resetButton.addEventListener('click', _resetGameboard);
+        backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
         announcement.textContent = `${player2.getName()} is the Winner!`;
     }
@@ -64,6 +84,10 @@ const GameEnd = (function () {
     const _tieGame = () => {
         const winnerModal = document.querySelector('.game-end');
         const announcement = document.querySelector('.announcement');
+        const backButton = document.querySelector('.back');
+        const resetButton = document.querySelector('.reset2');
+        resetButton.addEventListener('click', _resetGameboard);
+        backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
         announcement.textContent = 'It\'s a draw!';
     }
