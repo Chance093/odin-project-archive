@@ -6,17 +6,17 @@ const Gameboard = (function () { // Gameboard Module
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
         gameboard.forEach((element, index) => {
-            let cell = document.querySelector(`.cell${index}`)
+            let cell = document.querySelector(`.cell${index}`);
             cell.textContent = element;
         })
         GameEnd.checkWinner();
     };
 
-
-
     return { gameboard, updateGameboard };
 
 })();
+
+
 
 const GameEnd = (function () {
 
@@ -62,6 +62,8 @@ const GameEnd = (function () {
 
 })();
 
+
+
 const Player = function (name, xo) { // Player Factory Function
 
     let _xo = xo;
@@ -88,7 +90,8 @@ const Player = function (name, xo) { // Player Factory Function
     }
 
     return { makeMove };
-}
+
+};
 
 const player1 = Player('Chance', 'X');
 const player2 = Player('Ryan', 'O');

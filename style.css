@@ -139,16 +139,25 @@ table {
 }
 
 body {
+    height: 100vh;
+}
+
+.game {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+    justify-content: space-around;
+}
+
+.menu {
+    /* flex: 1; */
 }
 
 .gameboard {
     height: 500px;
     width: 500px;
     background-color: gray;
+    /* flex: 1; */
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
