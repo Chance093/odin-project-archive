@@ -48,15 +48,24 @@ const GameStart = (function () {
 const GameEnd = (function () {
 
     const _player1Wins = () => {
-        console.log('Player 1 Wins');
+        const winnerModal = document.querySelector('.game-end');
+        const announcement = document.querySelector('.announcement');
+        winnerModal.classList.add('show');
+        announcement.textContent = `${player1.getName()} is the Winner!`;
     }
 
     const _player2Wins = () => {
-        console.log('Player 2 Wins');
+        const winnerModal = document.querySelector('.game-end');
+        const announcement = document.querySelector('.announcement');
+        winnerModal.classList.add('show');
+        announcement.textContent = `${player2.getName()} is the Winner!`;
     }
 
     const _tieGame = () => {
-        console.log('Its a draw!');
+        const winnerModal = document.querySelector('.game-end');
+        const announcement = document.querySelector('.announcement');
+        winnerModal.classList.add('show');
+        announcement.textContent = 'It\'s a draw!';
     }
 
     const checkWinner = () => { // Checks if anyone has won after every move

@@ -149,15 +149,10 @@ body {
     justify-content: space-around;
 }
 
-.menu {
-    /* flex: 1; */
-}
-
 .gameboard {
     height: 500px;
     width: 500px;
     background-color: gray;
-    /* flex: 1; */
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
@@ -168,4 +163,32 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    background-color: white;
+    height: 500px;
+    width: 400px;
+    max-width: 100%;
+    padding: 30px 50px;
 }
