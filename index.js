@@ -5,7 +5,7 @@ const Gameboard = (function () { // Gameboard Module
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
     const updateGameboard = () => { // Displays gameboard array on gameboard
-        gameboard.forEach((element, index) => {
+        Gameboard.gameboard.forEach((element, index) => {
             let cell = document.querySelector(`.cell${index}`);
             cell.textContent = element;
         })
@@ -13,6 +13,33 @@ const Gameboard = (function () { // Gameboard Module
     };
 
     return { gameboard, updateGameboard };
+
+})();
+
+
+
+const GameStart = (function () {
+
+    const _p1name = document.querySelector('#p1name');
+    const _p1xo = document.querySelector('#p1xo');
+    const _p2name = document.querySelector('#p2name');
+    const _p2xo = document.querySelector('#p2xo');
+    const _resetButton = document.querySelector('.reset');
+
+    const fillMenu = () => {
+        _p1name.textContent = player1.getName();
+        _p1xo.textContent = player1.getXO();
+        _p2name.textContent = player2.getName();
+        _p2xo.textContent = player2.getXO();
+        _resetButton.addEventListener('click', _resetGameboard);
+    }
+
+    const _resetGameboard = () => {
+        Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
+        Gameboard.updateGameboard();
+    }
+
+    return { fillMenu };
 
 })();
 
@@ -68,6 +95,10 @@ const Player = function (name, xo) { // Player Factory Function
 
     let _xo = xo;
 
+    const getName = () => name;
+
+    const getXO = () => xo;
+
     const _switchTurn = () => { // Switches player turn after each move
         if (_xo === 'X') {
             cells.forEach(cell => cell.removeEventListener('click', player1.makeMove));
@@ -89,11 +120,11 @@ const Player = function (name, xo) { // Player Factory Function
         _switchTurn();
     }
 
-    return { makeMove };
+    return { makeMove, getName, getXO };
 
 };
 
 const player1 = Player('Chance', 'X');
 const player2 = Player('Ryan', 'O');
-
+GameStart.fillMenu();
 cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
