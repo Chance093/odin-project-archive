@@ -59,11 +59,17 @@ const GameEnd = (function () {
         Gameboard.updateGameboard();
     }
 
+    const _refreshPage = () => {
+        window.location.reload();
+    }
+
     const _player1Wins = () => {
         const winnerModal = document.querySelector('.game-end');
         const announcement = document.querySelector('.announcement');
         const backButton = document.querySelector('.back');
         const resetButton = document.querySelector('.reset2');
+        const menuButton = document.querySelector('.refresh');
+        menuButton.addEventListener('click', _refreshPage);
         resetButton.addEventListener('click', _resetGameboard);
         backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
@@ -75,6 +81,8 @@ const GameEnd = (function () {
         const announcement = document.querySelector('.announcement');
         const backButton = document.querySelector('.back');
         const resetButton = document.querySelector('.reset2');
+        const menuButton = document.querySelector('.refresh');
+        menuButton.addEventListener('click', _refreshPage);
         resetButton.addEventListener('click', _resetGameboard);
         backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
@@ -86,6 +94,8 @@ const GameEnd = (function () {
         const announcement = document.querySelector('.announcement');
         const backButton = document.querySelector('.back');
         const resetButton = document.querySelector('.reset2');
+        const menuButton = document.querySelector('.refresh');
+        menuButton.addEventListener('click', _refreshPage);
         resetButton.addEventListener('click', _resetGameboard);
         backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
