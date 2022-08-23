@@ -63,42 +63,32 @@ const GameEnd = (function () {
         window.location.reload();
     }
 
-    const _player1Wins = () => {
+    const _makeButtons = () => {
         const winnerModal = document.querySelector('.game-end');
-        const announcement = document.querySelector('.announcement');
         const backButton = document.querySelector('.back');
         const resetButton = document.querySelector('.reset2');
         const menuButton = document.querySelector('.refresh');
-        menuButton.addEventListener('click', _refreshPage);
-        resetButton.addEventListener('click', _resetGameboard);
-        backButton.addEventListener('click', _goBack);
         winnerModal.classList.add('show');
+        backButton.addEventListener('click', _goBack);
+        resetButton.addEventListener('click', _resetGameboard);
+        menuButton.addEventListener('click', _refreshPage);
+    }
+
+    const _player1Wins = () => {
+        _makeButtons();
+        const announcement = document.querySelector('.announcement');
         announcement.textContent = `${player1.getName()} is the Winner!`;
     }
 
     const _player2Wins = () => {
-        const winnerModal = document.querySelector('.game-end');
+        _makeButtons();
         const announcement = document.querySelector('.announcement');
-        const backButton = document.querySelector('.back');
-        const resetButton = document.querySelector('.reset2');
-        const menuButton = document.querySelector('.refresh');
-        menuButton.addEventListener('click', _refreshPage);
-        resetButton.addEventListener('click', _resetGameboard);
-        backButton.addEventListener('click', _goBack);
-        winnerModal.classList.add('show');
         announcement.textContent = `${player2.getName()} is the Winner!`;
     }
 
     const _tieGame = () => {
-        const winnerModal = document.querySelector('.game-end');
+        _makeButtons();
         const announcement = document.querySelector('.announcement');
-        const backButton = document.querySelector('.back');
-        const resetButton = document.querySelector('.reset2');
-        const menuButton = document.querySelector('.refresh');
-        menuButton.addEventListener('click', _refreshPage);
-        resetButton.addEventListener('click', _resetGameboard);
-        backButton.addEventListener('click', _goBack);
-        winnerModal.classList.add('show');
         announcement.textContent = 'It\'s a draw!';
     }
 
