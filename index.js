@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll('.cell');
+const pvpButton = document.querySelector('#pvp');
 
 const Gameboard = (function () { // Gameboard Module
 
@@ -33,38 +34,11 @@ const GameStart = (function () {
         _resetButton.addEventListener('click', _resetGameboard);
     }
 
-    const _createPVPinputs = () => {
-        const modalContainer = document.querySelector('.game-start');
-        modalContainer.innerHTML = '';
-        const divContainer = document.createElement('div');
-        const head = document.createElement('h1');
-        const p1input = document.createElement('input');
-        const p2input = document.createElement('input');
-        const vs = document.createElement('p');
-        const buttonsDiv = document.createElement('div');
-        const backButton = document.createElement('button');
-        const playButton = document.createElement('button');
-        divContainer.classList.add('player-inputs');
-        divContainer.classList.add('modal');
-        p1input.setAttribute('id', 'p1input');
-        p1input.setAttribute('placeholder', 'Player 1 Name');
-        p2input.setAttribute('id', 'p2input');
-        p2input.setAttribute('placeholder', 'Player 2 Name');
-        buttonsDiv.classList.add('buttons');
-        backButton.classList.add('back-start');
-        playButton.classList.add('play');
-        head.textContent = 'Enter Player Names';
-        vs.textContent = 'Vs.';
-        backButton.textContent = 'Back';
-        playButton.textContent = 'Play';
-        buttonsDiv.appendChild(backButton);
-        buttonsDiv.appendChild(playButton);
-        divContainer.appendChild(head);
-        divContainer.appendChild(p1input);
-        divContainer.appendChild(vs);
-        divContainer.appendChild(p2input);
-        divContainer.appendChild(buttonsDiv);
-        modalContainer.appendChild(divContainer);
+    const requestPVPinputs = () => {
+        const gameStart = document.querySelector('.game-start');
+        const gameStart2 = document.querySelector('.game-start-2');
+        gameStart2.classList.add('show');
+        gameStart.classList.remove('show');
     }
 
     const _resetGameboard = () => {
@@ -73,7 +47,7 @@ const GameStart = (function () {
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
-    return { fillMenu };
+    return { fillMenu, requestPVPinputs };
 
 })();
 
@@ -193,4 +167,5 @@ const Player = function (name, xo) { // Player Factory Function
 const player1 = Player('Chance', 'X');
 const player2 = Player('Ryan', 'O');
 GameStart.fillMenu();
+pvpButton.addEventListener('click', GameStart.requestPVPinputs)
 cells.forEach(cell => cell.addEventListener('click', player1.makeMove));

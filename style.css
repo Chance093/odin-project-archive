@@ -165,7 +165,8 @@ body {
     font-size: 3rem;
 }
 
-.game-start.modal-container {
+.game-start.modal-container,
+.game-start-2.modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -177,7 +178,7 @@ body {
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    /* transition: opacity 0.3s ease; */
 }
 
 .game-end.modal-container {
