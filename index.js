@@ -20,18 +20,51 @@ const Gameboard = (function () { // Gameboard Module
 
 const GameStart = (function () {
 
-    const _p1name = document.querySelector('#p1name');
-    const _p1xo = document.querySelector('#p1xo');
-    const _p2name = document.querySelector('#p2name');
-    const _p2xo = document.querySelector('#p2xo');
-    const _resetButton = document.querySelector('.reset');
-
     const fillMenu = () => {
+        const _p1name = document.querySelector('#p1name');
+        const _p1xo = document.querySelector('#p1xo');
+        const _p2name = document.querySelector('#p2name');
+        const _p2xo = document.querySelector('#p2xo');
+        const _resetButton = document.querySelector('.reset');
         _p1name.textContent = player1.getName();
         _p1xo.textContent = player1.getXO();
         _p2name.textContent = player2.getName();
         _p2xo.textContent = player2.getXO();
         _resetButton.addEventListener('click', _resetGameboard);
+    }
+
+    const _createPVPinputs = () => {
+        const modalContainer = document.querySelector('.game-start');
+        modalContainer.innerHTML = '';
+        const divContainer = document.createElement('div');
+        const head = document.createElement('h1');
+        const p1input = document.createElement('input');
+        const p2input = document.createElement('input');
+        const vs = document.createElement('p');
+        const buttonsDiv = document.createElement('div');
+        const backButton = document.createElement('button');
+        const playButton = document.createElement('button');
+        divContainer.classList.add('player-inputs');
+        divContainer.classList.add('modal');
+        p1input.setAttribute('id', 'p1input');
+        p1input.setAttribute('placeholder', 'Player 1 Name');
+        p2input.setAttribute('id', 'p2input');
+        p2input.setAttribute('placeholder', 'Player 2 Name');
+        buttonsDiv.classList.add('buttons');
+        backButton.classList.add('back-start');
+        playButton.classList.add('play');
+        head.textContent = 'Enter Player Names';
+        vs.textContent = 'Vs.';
+        backButton.textContent = 'Back';
+        playButton.textContent = 'Play';
+        buttonsDiv.appendChild(backButton);
+        buttonsDiv.appendChild(playButton);
+        divContainer.appendChild(head);
+        divContainer.appendChild(p1input);
+        divContainer.appendChild(vs);
+        divContainer.appendChild(p2input);
+        divContainer.appendChild(buttonsDiv);
+        modalContainer.appendChild(divContainer);
     }
 
     const _resetGameboard = () => {
@@ -92,7 +125,7 @@ const GameEnd = (function () {
         announcement.textContent = 'It\'s a draw!';
     }
 
-    const checkWinner = () => { // Checks if anyone has won after every move
+    const checkWinner = () => { // Checks for winner after every move
         if ((Gameboard.gameboard[0] === 'X' && Gameboard.gameboard[1] === 'X' && Gameboard.gameboard[2] === 'X') ||
             (Gameboard.gameboard[3] === 'X' && Gameboard.gameboard[4] === 'X' && Gameboard.gameboard[5] === 'X') ||
             (Gameboard.gameboard[6] === 'X' && Gameboard.gameboard[7] === 'X' && Gameboard.gameboard[8] === 'X') ||
