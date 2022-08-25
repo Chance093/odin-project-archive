@@ -33,7 +33,7 @@ const Gameboard = (function () { // Gameboard Module
 
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
-    const updateGameboard = () => { // Displays gameboard array on gameboard
+    function updateGameboard() { // Displays gameboard array on gameboard
         Gameboard.gameboard.forEach((element, index) => {
             let cell = document.querySelector(`.cell${index}`);
             cell.textContent = element;
