@@ -22,23 +22,40 @@ const Gameboard = (function () { // Gameboard Module
 const GameStart = (function () {
 
     const fillMenu = () => {
-        const _p1name = document.querySelector('#p1name');
-        const _p1xo = document.querySelector('#p1xo');
-        const _p2name = document.querySelector('#p2name');
-        const _p2xo = document.querySelector('#p2xo');
-        const _resetButton = document.querySelector('.reset');
-        _p1name.textContent = player1.getName();
-        _p1xo.textContent = player1.getXO();
-        _p2name.textContent = player2.getName();
-        _p2xo.textContent = player2.getXO();
-        _resetButton.addEventListener('click', _resetGameboard);
+        const p1name = document.querySelector('#p1name');
+        const p1input = document.querySelector('#p1input');
+        const p1xo = document.querySelector('#p1xo');
+        const p2name = document.querySelector('#p2name');
+        const p2input = document.querySelector('#p2input');
+        const p2xo = document.querySelector('#p2xo');
+        const resetButton = document.querySelector('.reset');
+        p1name.textContent = p1input.value;
+        p1xo.textContent = player1.getXO();
+        p2name.textContent = p2input.value;
+        p2xo.textContent = player2.getXO();
+        resetButton.addEventListener('click', _resetGameboard);
     }
 
     const requestPVPinputs = () => {
         const gameStart = document.querySelector('.game-start');
         const gameStart2 = document.querySelector('.game-start-2');
-        gameStart2.classList.add('show');
+        const backButton = document.querySelector('.back-start');
+        const playButton = document.querySelector('.play');
         gameStart.classList.remove('show');
+        gameStart2.classList.add('show');
+        backButton.addEventListener('click', _backToStart);
+        playButton.addEventListener('click', _playGame);
+    }
+
+    const _backToStart = () => {
+        window.location.reload();
+    }
+
+    const _playGame = () => {
+        fillMenu();
+        const gameStart2 = document.querySelector('.game-start-2');
+        gameStart2.classList.remove('show');
+        cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
     const _resetGameboard = () => {
@@ -84,13 +101,15 @@ const GameEnd = (function () {
     const _player1Wins = () => {
         _makeButtons();
         const announcement = document.querySelector('.announcement');
-        announcement.textContent = `${player1.getName()} is the Winner!`;
+        const p1input = document.querySelector('#p1input');
+        announcement.textContent = `${p1input.value} is the Winner!`;
     }
 
     const _player2Wins = () => {
         _makeButtons();
         const announcement = document.querySelector('.announcement');
-        announcement.textContent = `${player2.getName()} is the Winner!`;
+        const p2input = document.querySelector('#p2input');
+        announcement.textContent = `${p2input.value} is the Winner!`;
     }
 
     const _tieGame = () => {
@@ -131,11 +150,9 @@ const GameEnd = (function () {
 
 
 
-const Player = function (name, xo) { // Player Factory Function
+const Player = function (xo) { // Player Factory Function
 
     let _xo = xo;
-
-    const getName = () => name;
 
     const getXO = () => xo;
 
@@ -160,12 +177,11 @@ const Player = function (name, xo) { // Player Factory Function
         _switchTurn();
     }
 
-    return { makeMove, getName, getXO };
+    return { makeMove, getXO };
 
 };
 
-const player1 = Player('Chance', 'X');
-const player2 = Player('Ryan', 'O');
-GameStart.fillMenu();
+
 pvpButton.addEventListener('click', GameStart.requestPVPinputs)
-cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
+const player1 = Player('X');
+const player2 = Player('O');
