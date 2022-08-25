@@ -2,12 +2,8 @@ const Player = function (xo) { // Player Factory Function
 
     const cells = document.querySelectorAll('.cell');
 
-    let _xo = xo;
-
-    const getXO = () => xo;
-
-    const _switchTurn = () => { // Switches player turn after each move
-        if (_xo === 'X') {
+    function _switchTurn() { // Switches player turn after each move
+        if (xo === 'X') {
             cells.forEach(cell => cell.removeEventListener('click', GameStart.player1.makeMove));
             cells.forEach(cell => cell.addEventListener('click', GameStart.player2.makeMove));
         } else {
@@ -16,18 +12,18 @@ const Player = function (xo) { // Player Factory Function
         }
     }
 
-    const makeMove = (e) => { // Updates gameboard array
+    function makeMove(e) { // Updates gameboard array
         const index = e.target.dataset.cellIndex;
         if (Gameboard.gameboard[index]) {
             return;
         } else {
-            Gameboard.gameboard.splice(index, 1, _xo);
+            Gameboard.gameboard.splice(index, 1, xo);
         }
         Gameboard.updateGameboard();
         _switchTurn();
     }
 
-    return { makeMove, getXO };
+    return { makeMove };
 
 };
 
@@ -67,9 +63,9 @@ const GameStart = (function () {
         const p2xo = document.querySelector('#p2xo');
         const resetButton = document.querySelector('.reset');
         p1name.textContent = p1input.value;
-        p1xo.textContent = player1.getXO();
+        p1xo.textContent = 'X';
         p2name.textContent = p2input.value;
-        p2xo.textContent = player2.getXO();
+        p2xo.textContent = 'O';
         resetButton.addEventListener('click', _resetGameboard);
     }
 
