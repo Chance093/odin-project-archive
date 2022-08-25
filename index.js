@@ -111,57 +111,58 @@ const GameStart = (function () {  // GameStart Module
 
 const GameEnd = (function () { // GameEnd Module
 
+    // DOM CACHE
     const cells = document.querySelectorAll('.cell');
+    const winnerModal = document.querySelector('.game-end');
+    const backButton = document.querySelector('.back');
+    const resetButton = document.querySelector('.reset2');
+    const menuButton = document.querySelector('.refresh');
+    const announcement = document.querySelector('.announcement');
+    const p1input = document.querySelector('#p1input');
+    const p2input = document.querySelector('#p2input');
 
-    const _goBack = () => {
-        const winnerModal = document.querySelector('.game-end');
+    // EVENT LISTENERS
+    backButton.addEventListener('click', _closeWinner);
+    resetButton.addEventListener('click', _resetGameboard);
+    menuButton.addEventListener('click', _refreshPage);
+
+    // METHODS AND PROPERTIES
+    function _displayWinner() { // Displays the winner of the game
+        winnerModal.classList.add('show');
+    }
+
+    function _closeWinner() { // Closes the winner modal
         winnerModal.classList.remove('show');
     }
 
-    const _resetGameboard = () => {
-        _goBack();
+    function _resetGameboard() { // Resets game
+        _closeWinner();
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
         cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
         cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
     }
 
-    const _refreshPage = () => {
+    function _refreshPage() { // Refreshes Page
         window.location.reload();
     }
 
-    const _makeButtons = () => {
-        const winnerModal = document.querySelector('.game-end');
-        const backButton = document.querySelector('.back');
-        const resetButton = document.querySelector('.reset2');
-        const menuButton = document.querySelector('.refresh');
-        winnerModal.classList.add('show');
-        backButton.addEventListener('click', _goBack);
-        resetButton.addEventListener('click', _resetGameboard);
-        menuButton.addEventListener('click', _refreshPage);
-    }
-
-    const _player1Wins = () => {
-        _makeButtons();
-        const announcement = document.querySelector('.announcement');
-        const p1input = document.querySelector('#p1input');
+    function _player1Wins() { // Displays player 1 winner
+        _displayWinner();
         announcement.textContent = `${p1input.value} is the Winner!`;
     }
 
-    const _player2Wins = () => {
-        _makeButtons();
-        const announcement = document.querySelector('.announcement');
-        const p2input = document.querySelector('#p2input');
+    function _player2Wins() { // Displays player 2 winner
+        _displayWinner();
         announcement.textContent = `${p2input.value} is the Winner!`;
     }
 
-    const _tieGame = () => {
-        _makeButtons();
-        const announcement = document.querySelector('.announcement');
+    function _tieGame() { // Displays player 3 winner
+        _displayWinner();
         announcement.textContent = 'It\'s a draw!';
     }
 
-    const checkWinner = () => { // Checks for winner after every move
+    function checkWinner() { // Checks for winner after every move
         if ((Gameboard.gameboard[0] === 'X' && Gameboard.gameboard[1] === 'X' && Gameboard.gameboard[2] === 'X') ||
             (Gameboard.gameboard[3] === 'X' && Gameboard.gameboard[4] === 'X' && Gameboard.gameboard[5] === 'X') ||
             (Gameboard.gameboard[6] === 'X' && Gameboard.gameboard[7] === 'X' && Gameboard.gameboard[8] === 'X') ||
