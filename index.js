@@ -1,5 +1,37 @@
-const cells = document.querySelectorAll('.cell');
-const pvpButton = document.querySelector('#pvp');
+const Player = function (xo) { // Player Factory Function
+
+    const cells = document.querySelectorAll('.cell');
+
+    let _xo = xo;
+
+    const getXO = () => xo;
+
+    const _switchTurn = () => { // Switches player turn after each move
+        if (_xo === 'X') {
+            cells.forEach(cell => cell.removeEventListener('click', GameStart.player1.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', GameStart.player2.makeMove));
+        } else {
+            cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
+        }
+    }
+
+    const makeMove = (e) => { // Updates gameboard array
+        const index = e.target.dataset.cellIndex;
+        if (Gameboard.gameboard[index]) {
+            return;
+        } else {
+            Gameboard.gameboard.splice(index, 1, _xo);
+        }
+        Gameboard.updateGameboard();
+        _switchTurn();
+    }
+
+    return { makeMove, getXO };
+
+};
+
+
 
 const Gameboard = (function () { // Gameboard Module
 
@@ -20,6 +52,11 @@ const Gameboard = (function () { // Gameboard Module
 
 
 const GameStart = (function () {
+
+    const cells = document.querySelectorAll('.cell');
+    const pvpButton = document.querySelector('#pvp');
+    const player1 = Player('X');
+    const player2 = Player('O');
 
     const fillMenu = () => {
         const p1name = document.querySelector('#p1name');
@@ -65,13 +102,17 @@ const GameStart = (function () {
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
-    return { fillMenu, requestPVPinputs };
+    pvpButton.addEventListener('click', requestPVPinputs)
+
+    return { fillMenu, player1, player2 };
 
 })();
 
 
 
 const GameEnd = (function () {
+
+    const cells = document.querySelectorAll('.cell');
 
     const _goBack = () => {
         const winnerModal = document.querySelector('.game-end');
@@ -82,8 +123,8 @@ const GameEnd = (function () {
         _goBack();
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
-        cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
-        cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
+        cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
+        cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
     }
 
     const _refreshPage = () => {
@@ -150,41 +191,3 @@ const GameEnd = (function () {
     return { checkWinner };
 
 })();
-
-
-
-const Player = function (xo) { // Player Factory Function
-
-    let _xo = xo;
-
-    const getXO = () => xo;
-
-    const _switchTurn = () => { // Switches player turn after each move
-        if (_xo === 'X') {
-            cells.forEach(cell => cell.removeEventListener('click', player1.makeMove));
-            cells.forEach(cell => cell.addEventListener('click', player2.makeMove));
-        } else {
-            cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
-            cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
-        }
-    }
-
-    const makeMove = (e) => { // Updates gameboard array
-        const index = e.target.dataset.cellIndex;
-        if (Gameboard.gameboard[index]) {
-            return;
-        } else {
-            Gameboard.gameboard.splice(index, 1, _xo);
-        }
-        Gameboard.updateGameboard();
-        _switchTurn();
-    }
-
-    return { makeMove, getXO };
-
-};
-
-
-pvpButton.addEventListener('click', GameStart.requestPVPinputs)
-const player1 = Player('X');
-const player2 = Player('O');
