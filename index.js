@@ -61,6 +61,7 @@ const GameStart = (function () {
     const _resetGameboard = () => {
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
+        cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
@@ -81,6 +82,8 @@ const GameEnd = (function () {
         _goBack();
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
+        cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
+        cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
     const _refreshPage = () => {
