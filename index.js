@@ -1,7 +1,9 @@
 const Player = function (xo) { // Player Factory Function
 
+    // DOM CACHE
     const cells = document.querySelectorAll('.cell');
 
+    // METHODS AND PROPERTIES
     function _switchTurn() { // Switches player turn after each move
         if (xo === 'X') {
             cells.forEach(cell => cell.removeEventListener('click', GameStart.player1.makeMove));
@@ -31,6 +33,7 @@ const Player = function (xo) { // Player Factory Function
 
 const Gameboard = (function () { // Gameboard Module
 
+    // METHODS AND PROPERTIES
     const gameboard = ['', '', '', '', '', '', '', '', ''];
 
     function updateGameboard() { // Displays gameboard array on gameboard
@@ -39,7 +42,7 @@ const Gameboard = (function () { // Gameboard Module
             cell.textContent = element;
         })
         GameEnd.checkWinner();
-    };
+    }
 
     return { gameboard, updateGameboard };
 
@@ -47,66 +50,66 @@ const Gameboard = (function () { // Gameboard Module
 
 
 
-const GameStart = (function () {
+const GameStart = (function () {  // GameStart Module
 
+    // DOM CACHE
     const cells = document.querySelectorAll('.cell');
     const pvpButton = document.querySelector('#pvp');
+    const p1name = document.querySelector('#p1name');
+    const p1input = document.querySelector('#p1input');
+    const p2name = document.querySelector('#p2name');
+    const p2input = document.querySelector('#p2input');
+    const resetButton = document.querySelector('.reset');
+    const gameStart = document.querySelector('.game-start');
+    const gameStart2 = document.querySelector('.game-start-2');
+    const backButton = document.querySelector('.back-start');
+    const playButton = document.querySelector('.play');
+
+    // EVENT LISTENERS
+    resetButton.addEventListener('click', _resetGameboard);
+    backButton.addEventListener('click', _refreshPage);
+    playButton.addEventListener('click', _startGame);
+    pvpButton.addEventListener('click', _requestPlayerNames);
+
+    // METHODS AND PROPERTIES
     const player1 = Player('X');
+
     const player2 = Player('O');
 
-    const fillMenu = () => {
-        const p1name = document.querySelector('#p1name');
-        const p1input = document.querySelector('#p1input');
-        const p1xo = document.querySelector('#p1xo');
-        const p2name = document.querySelector('#p2name');
-        const p2input = document.querySelector('#p2input');
-        const p2xo = document.querySelector('#p2xo');
-        const resetButton = document.querySelector('.reset');
+    function _displayPlayerNames() { // Displays player names on menu board
         p1name.textContent = p1input.value;
-        p1xo.textContent = 'X';
         p2name.textContent = p2input.value;
-        p2xo.textContent = 'O';
-        resetButton.addEventListener('click', _resetGameboard);
     }
 
-    const requestPVPinputs = () => {
-        const gameStart = document.querySelector('.game-start');
-        const gameStart2 = document.querySelector('.game-start-2');
-        const backButton = document.querySelector('.back-start');
-        const playButton = document.querySelector('.play');
+    function _requestPlayerNames() { // Requests player names
         gameStart.classList.remove('show');
         gameStart2.classList.add('show');
-        backButton.addEventListener('click', _backToStart);
-        playButton.addEventListener('click', _playGame);
     }
 
-    const _backToStart = () => {
+    function _refreshPage() { // Refreshes page
         window.location.reload();
     }
 
-    const _playGame = () => {
-        fillMenu();
-        const gameStart2 = document.querySelector('.game-start-2');
+    function _startGame() { // Starts game
+        _displayPlayerNames();
         gameStart2.classList.remove('show');
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
-    const _resetGameboard = () => {
+    function _resetGameboard() { // Resets game
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
         cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 
-    pvpButton.addEventListener('click', requestPVPinputs)
-
-    return { fillMenu, player1, player2 };
+    return { player1, player2 };
 
 })();
 
 
 
-const GameEnd = (function () {
+const GameEnd = (function () { // GameEnd Module
 
     const cells = document.querySelectorAll('.cell');
 
