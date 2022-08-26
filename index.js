@@ -21,8 +21,8 @@ const Player = function (xo) { // Player Factory Function
         } else {
             Gameboard.gameboard.splice(index, 1, xo);
         }
-        Gameboard.updateGameboard();
         _switchTurn();
+        Gameboard.updateGameboard();
     }
 
     return { makeMove };
@@ -149,11 +149,13 @@ const GameEnd = (function () { // GameEnd Module
 
     function _player1Wins() { // Displays player 1 winner
         _displayWinner();
+        cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
         announcement.textContent = `${p1input.value} is the Winner!`;
     }
 
     function _player2Wins() { // Displays player 2 winner
         _displayWinner();
+        cells.forEach(cell => cell.removeEventListener('click', GameStart.player1.makeMove));
         announcement.textContent = `${p2input.value} is the Winner!`;
     }
 
