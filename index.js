@@ -151,14 +151,20 @@ const AI = (function () { // AI Module
         cells.forEach(cell => cell.addEventListener('click', _makeMove));
     }
 
-    // function _makeMove() {
-    //     const index = e.target.dataset.cellIndex;
-    //     if (Gameboard.gameboard[index]) {
-    //         return;
-    //     } else {
-    //         Gameboard.gameboard.splice(index, 1, xo);
-    //     }
-    // }
+    function _makeMove() {
+        const index = e.target.dataset.cellIndex;
+        if (Gameboard.gameboard[index]) {
+            return;
+        } else {
+            if (x.checked) {
+                Gameboard.gameboard.splice(index, 1, 'X');
+            } else if (o.checked) {
+                Gameboard.gameboard.splice(index, 1, 'O');
+            }
+        }
+        Gameboard.updateGameboard();
+        _opponentMove();
+    }
 
 })();
 
