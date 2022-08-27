@@ -132,6 +132,17 @@ const AI = (function () { // AI Module
     backButton.addEventListener('click', _refreshPage);
     playButton.addEventListener('click', _startGame);
 
+    // METHODS AND PROPERTIES
+    function _displayPlayerNames() {
+        if (x.checked) {
+            p1name.textContent = playerName;
+            p2name.textContent = 'The Computer';
+        } else if (o.checked) {
+            p1name.textContent = 'The Computer';
+            p2name.textContent = playerName;
+        }
+    }
+
 })();
 
 
