@@ -117,6 +117,25 @@ const GameStart = (function () {  // GameStart Module
 
 
 
+const AI = (function () { // AI Module
+
+    // DOM CACHE
+    const backButton = document.querySelector('.back-pve');
+    const playButton = document.querySelector('.play-pve');
+    const playerName = document.querySelector('#playerinput');
+    const x = document.querySelector('#X');
+    const o = document.querySelector('#O');
+    const p1name = document.querySelector('#p1name');
+    const p2name = document.querySelector('#p2name');
+
+    // EVENT LISTENERS
+    backButton.addEventListener('click', _refreshPage);
+    playButton.addEventListener('click', _startGame);
+
+})();
+
+
+
 const GameEnd = (function () { // GameEnd Module
 
     // DOM CACHE
