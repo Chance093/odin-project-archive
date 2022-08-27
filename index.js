@@ -137,17 +137,20 @@ const AI = (function () { // AI Module
     // METHODS AND PROPERTIES
     function _displayPlayerNames() {
         if (x.checked) {
-            p1name.textContent = playerName;
+            p1name.textContent = playerName.value;
             p2name.textContent = 'The Computer';
         } else if (o.checked) {
             p1name.textContent = 'The Computer';
-            p2name.textContent = playerName;
+            p2name.textContent = playerName.value;
         }
     }
 
     function _startGame() {
         _displayPlayerNames();
         gameStartPVE.classList.remove('show');
+        if (o.checked) {
+            setTimeout(_opponentMove, '400');
+        }
         cells.forEach(cell => cell.addEventListener('click', _makeMove));
     }
 
