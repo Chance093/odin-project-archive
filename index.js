@@ -129,6 +129,7 @@ const AI = (function () { // AI Module
     const p1name = document.querySelector('#p1name');
     const p2name = document.querySelector('#p2name');
     const gameStartPVE = document.querySelector('.game-start-pve');
+    const gameEnd = document.querySelector('.game-end');
 
     // EVENT LISTENERS
     backButton.addEventListener('click', _refreshPage);
@@ -170,9 +171,10 @@ const AI = (function () { // AI Module
     }
 
     function _opponentMove() {
-        let index = Math.floor(Math.random() * 8);
+        if (gameEnd.classList.contains('show')) return;
+        let index = Math.floor(Math.random() * 9);
         while (Gameboard.gameboard[index]) {
-            index = Math.floor(Math.random() * 8);
+            index = Math.floor(Math.random() * 9);
         }
         if (x.checked) {
             Gameboard.gameboard.splice(index, 1, 'O');
