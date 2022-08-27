@@ -152,10 +152,10 @@ const AI = (function () { // AI Module
         if (o.checked) {
             setTimeout(_opponentMove, '400');
         }
-        cells.forEach(cell => cell.addEventListener('click', _makeMove));
+        cells.forEach(cell => cell.addEventListener('click', makeMove));
     }
 
-    function _makeMove(e) {
+    function makeMove(e) {
         const index = e.target.dataset.cellIndex;
         if (Gameboard.gameboard[index]) {
             return;
@@ -188,6 +188,8 @@ const AI = (function () { // AI Module
         window.location.reload();
     }
 
+    return { makeMove };
+
 })();
 
 
@@ -203,6 +205,9 @@ const GameEnd = (function () { // GameEnd Module
     const announcement = document.querySelector('.announcement');
     const p1input = document.querySelector('#p1input');
     const p2input = document.querySelector('#p2input');
+    const playerName = document.querySelector('#playerinput');
+    const x = document.querySelector('#X');
+    const o = document.querySelector('#O');
 
     // EVENT LISTENERS
     backButton.addEventListener('click', _closeWinner);
@@ -233,13 +238,31 @@ const GameEnd = (function () { // GameEnd Module
     function _player1Wins() { // Displays player 1 winner
         _displayWinner();
         cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
-        announcement.textContent = `${p1input.value} is the Winner!`;
+        cells.forEach(cell => cell.removeEventListener('click', AI.makeMove));
+        if (!p1input.value) {
+            if (x.checked) {
+                announcement.textContent = `${playerName.value} is the Winner!`;
+            } else if (o.checked) {
+                announcement.textContent = `The Computer is the Winner!`;
+            }
+        } else {
+            announcement.textContent = `${p1input.value} is the Winner!`;
+        }
     }
 
     function _player2Wins() { // Displays player 2 winner
         _displayWinner();
         cells.forEach(cell => cell.removeEventListener('click', GameStart.player1.makeMove));
-        announcement.textContent = `${p2input.value} is the Winner!`;
+        cells.forEach(cell => cell.removeEventListener('click', AI.makeMove));
+        if (!p2input.value) {
+            if (o.checked) {
+                announcement.textContent = `${playerName.value} is the Winner!`;
+            } else if (x.checked) {
+                announcement.textContent = `The Computer is the Winner!`;
+            }
+        } else {
+            announcement.textContent = `${p2input.value} is the Winner!`;
+        }
     }
 
     function _tieGame() { // Displays player 3 winner
