@@ -120,6 +120,7 @@ const GameStart = (function () {  // GameStart Module
 const AI = (function () { // AI Module
 
     // DOM CACHE
+    const cells = document.querySelectorAll('.cell');
     const backButton = document.querySelector('.back-pve');
     const playButton = document.querySelector('.play-pve');
     const playerName = document.querySelector('#playerinput');
@@ -127,6 +128,7 @@ const AI = (function () { // AI Module
     const o = document.querySelector('#O');
     const p1name = document.querySelector('#p1name');
     const p2name = document.querySelector('#p2name');
+    const gameStartPVE = document.querySelector('.game-start-pve');
 
     // EVENT LISTENERS
     backButton.addEventListener('click', _refreshPage);
@@ -142,6 +144,21 @@ const AI = (function () { // AI Module
             p2name.textContent = playerName;
         }
     }
+
+    function _startGame() {
+        _displayPlayerNames();
+        gameStartPVE.classList.remove('show');
+        cells.forEach(cell => cell.addEventListener('click', _makeMove));
+    }
+
+    // function _makeMove() {
+    //     const index = e.target.dataset.cellIndex;
+    //     if (Gameboard.gameboard[index]) {
+    //         return;
+    //     } else {
+    //         Gameboard.gameboard.splice(index, 1, xo);
+    //     }
+    // }
 
 })();
 
