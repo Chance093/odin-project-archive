@@ -60,6 +60,7 @@ const GameStart = (function () {  // GameStart Module
     const p1input = document.querySelector('#p1input');
     const p2name = document.querySelector('#p2name');
     const p2input = document.querySelector('#p2input');
+    const mainMenuButton = document.querySelector('.main-menu');
     const resetButton = document.querySelector('.reset');
     const gameStart = document.querySelector('.game-start');
     const gameStartPVP = document.querySelector('.game-start-pvp');
@@ -74,6 +75,7 @@ const GameStart = (function () {  // GameStart Module
     playButton.addEventListener('click', _startGame);
     pvpButton.addEventListener('click', _requestPlayerNames);
     pveButton.addEventListener('click', _choosePVE);
+    mainMenuButton.addEventListener('click', _refreshPage);
 
     // METHODS AND PROPERTIES
     const player1 = Player('X');
