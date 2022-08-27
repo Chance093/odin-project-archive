@@ -55,13 +55,15 @@ const GameStart = (function () {  // GameStart Module
     // DOM CACHE
     const cells = document.querySelectorAll('.cell');
     const pvpButton = document.querySelector('#pvp');
+    const pveButton = document.querySelector('#pve');
     const p1name = document.querySelector('#p1name');
     const p1input = document.querySelector('#p1input');
     const p2name = document.querySelector('#p2name');
     const p2input = document.querySelector('#p2input');
     const resetButton = document.querySelector('.reset');
     const gameStart = document.querySelector('.game-start');
-    const gameStart2 = document.querySelector('.game-start-2');
+    const gameStartPVP = document.querySelector('.game-start-pvp');
+    const gameStartPVE = document.querySelector('.game-start-pve');
     const backButton = document.querySelector('.back-start');
     const playButton = document.querySelector('.play');
 
@@ -70,6 +72,7 @@ const GameStart = (function () {  // GameStart Module
     backButton.addEventListener('click', _refreshPage);
     playButton.addEventListener('click', _startGame);
     pvpButton.addEventListener('click', _requestPlayerNames);
+    pveButton.addEventListener('click', _choosePVE);
 
     // METHODS AND PROPERTIES
     const player1 = Player('X');
@@ -83,7 +86,12 @@ const GameStart = (function () {  // GameStart Module
 
     function _requestPlayerNames() { // Requests player names
         gameStart.classList.remove('show');
-        gameStart2.classList.add('show');
+        gameStartPVP.classList.add('show');
+    }
+
+    function _choosePVE() {
+        gameStart.classList.remove('show');
+        gameStartPVE.classList.add('show');
     }
 
     function _refreshPage() { // Refreshes page
@@ -92,7 +100,7 @@ const GameStart = (function () {  // GameStart Module
 
     function _startGame() { // Starts game
         _displayPlayerNames();
-        gameStart2.classList.remove('show');
+        gameStartPVP.classList.remove('show');
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
     }
 

@@ -166,7 +166,8 @@ body {
 }
 
 .game-start.modal-container,
-.game-start-2.modal-container {
+.game-start-pvp.modal-container,
+.game-start-pve.modal-container {
     position: fixed;
     top: 0;
     left: 0;
