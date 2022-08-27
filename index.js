@@ -151,7 +151,7 @@ const AI = (function () { // AI Module
         cells.forEach(cell => cell.addEventListener('click', _makeMove));
     }
 
-    function _makeMove() {
+    function _makeMove(e) {
         const index = e.target.dataset.cellIndex;
         if (Gameboard.gameboard[index]) {
             return;
@@ -163,7 +163,20 @@ const AI = (function () { // AI Module
             }
         }
         Gameboard.updateGameboard();
-        _opponentMove();
+        setTimeout(_opponentMove, '1000');
+    }
+
+    function _opponentMove() {
+        let index = Math.floor(Math.random() * 8);
+        while (Gameboard.gameboard[index]) {
+            index = Math.floor(Math.random() * 8);
+        }
+        if (x.checked) {
+            Gameboard.gameboard.splice(index, 1, 'O');
+        } else if (o.checked) {
+            Gameboard.gameboard.splice(index, 1, 'X');
+        }
+        Gameboard.updateGameboard();
     }
 
 })();
