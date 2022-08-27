@@ -66,6 +66,7 @@ const GameStart = (function () {  // GameStart Module
     const gameStartPVE = document.querySelector('.game-start-pve');
     const backButton = document.querySelector('.back-start');
     const playButton = document.querySelector('.play');
+    const o = document.querySelector('#O');
 
     // EVENT LISTENERS
     resetButton.addEventListener('click', _resetGameboard);
@@ -107,8 +108,15 @@ const GameStart = (function () {  // GameStart Module
     function _resetGameboard() { // Resets game
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
-        cells.forEach(cell => cell.removeEventListener('click', player2.makeMove));
-        cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
+        if (p1input.value) {
+            cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
+        } else {
+            if (o.checked) {
+                setTimeout(AI.opponentMove, '400');
+            }
+            cells.forEach(cell => cell.addEventListener('click', AI.makeMove));
+        }
     }
 
     return { player1, player2 };
@@ -150,7 +158,7 @@ const AI = (function () { // AI Module
         _displayPlayerNames();
         gameStartPVE.classList.remove('show');
         if (o.checked) {
-            setTimeout(_opponentMove, '400');
+            setTimeout(opponentMove, '400');
         }
         cells.forEach(cell => cell.addEventListener('click', makeMove));
     }
@@ -167,10 +175,10 @@ const AI = (function () { // AI Module
             }
         }
         Gameboard.updateGameboard();
-        setTimeout(_opponentMove, '1000');
+        setTimeout(opponentMove, '1000');
     }
 
-    function _opponentMove() {
+    function opponentMove() {
         if (gameEnd.classList.contains('show')) return;
         let index = Math.floor(Math.random() * 9);
         while (Gameboard.gameboard[index]) {
@@ -188,7 +196,7 @@ const AI = (function () { // AI Module
         window.location.reload();
     }
 
-    return { makeMove };
+    return { makeMove, opponentMove };
 
 })();
 
@@ -227,8 +235,15 @@ const GameEnd = (function () { // GameEnd Module
         _closeWinner();
         Gameboard.gameboard = ['', '', '', '', '', '', '', '', ''];
         Gameboard.updateGameboard();
-        cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
-        cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
+        if (p1input.value) {
+            cells.forEach(cell => cell.removeEventListener('click', GameStart.player2.makeMove));
+            cells.forEach(cell => cell.addEventListener('click', GameStart.player1.makeMove));
+        } else {
+            if (o.checked) {
+                setTimeout(AI.opponentMove, '400');
+            }
+            cells.forEach(cell => cell.addEventListener('click', AI.makeMove));
+        }
     }
 
     function _refreshPage() { // Refreshes Page
