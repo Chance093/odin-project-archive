@@ -179,6 +179,10 @@ const AI = (function () { // AI Module
         Gameboard.updateGameboard();
     }
 
+    function _refreshPage() {
+        window.location.reload();
+    }
+
 })();
 
 
