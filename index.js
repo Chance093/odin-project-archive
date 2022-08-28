@@ -102,6 +102,7 @@ const GameStart = (function () {  // GameStart Module
     }
 
     function _startGame() { // Starts PVP game
+        if (!p1input.value || !p2input.value) return;
         _displayPlayerNames();
         gameStartPVP.classList.remove('show');
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
@@ -157,6 +158,8 @@ const AI = (function () { // AI Module
     }
 
     function _startGame() { // Start PVE game
+        if (!x.checked && !o.checked) return;
+        if (!playerName.value) return;
         _displayPlayerNames();
         gameStartPVE.classList.remove('show');
         if (o.checked) {
