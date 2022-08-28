@@ -180,6 +180,7 @@ const AI = (function () { // AI Module
             }
         }
         Gameboard.updateGameboard();
+        cells.forEach(cell => cell.removeEventListener('click', makeMove));
         setTimeout(opponentMove, '1000');
     }
 
@@ -195,6 +196,7 @@ const AI = (function () { // AI Module
             Gameboard.gameboard.splice(index, 1, 'X');
         }
         Gameboard.updateGameboard();
+        cells.forEach(cell => cell.addEventListener('click', makeMove));
     }
 
     function _refreshPage() { // Refreshes Page
