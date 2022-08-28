@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="game-start modal-container show">
+    <div class="game-start modal-container">
         <div class="game-select modal">
             <h1>Choose Your Gamemode:</h1>
             <div class="buttons">
@@ -34,12 +34,14 @@
             </div>
         </div>
     </div>
-    <div class="game-start-pve modal-container">
+    <div class="game-start-pve modal-container show">
         <div class="pve-inputs modal">
             <h1>Choose Your Move:</h1>
             <div class="radio-buttons">
                 <input type="radio" id="X" name="xo">
+                <label for="X">X</label>
                 <input type="radio" id="O" name="xo">
+                <label for="O">O</label>
             </div>
             <input type="text" id="playerinput" placeholder="Player Name">
             <div class="buttons">
