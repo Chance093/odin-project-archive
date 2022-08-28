@@ -73,7 +73,7 @@ const GameStart = (function () {  // GameStart Module
     resetButton.addEventListener('click', _resetGameboard);
     backButton.addEventListener('click', _refreshPage);
     playButton.addEventListener('click', _startGame);
-    pvpButton.addEventListener('click', _requestPlayerNames);
+    pvpButton.addEventListener('click', _choosePVP);
     pveButton.addEventListener('click', _choosePVE);
     mainMenuButton.addEventListener('click', _refreshPage);
 
@@ -87,12 +87,12 @@ const GameStart = (function () {  // GameStart Module
         p2name.textContent = p2input.value;
     }
 
-    function _requestPlayerNames() { // Requests player names
+    function _choosePVP() { // Requests player names for PVP
         gameStart.classList.remove('show');
         gameStartPVP.classList.add('show');
     }
 
-    function _choosePVE() {
+    function _choosePVE() { // Request player name and move for PVE
         gameStart.classList.remove('show');
         gameStartPVE.classList.add('show');
     }
@@ -101,7 +101,7 @@ const GameStart = (function () {  // GameStart Module
         window.location.reload();
     }
 
-    function _startGame() { // Starts game
+    function _startGame() { // Starts PVP game
         _displayPlayerNames();
         gameStartPVP.classList.remove('show');
         cells.forEach(cell => cell.addEventListener('click', player1.makeMove));
@@ -146,7 +146,7 @@ const AI = (function () { // AI Module
     playButton.addEventListener('click', _startGame);
 
     // METHODS AND PROPERTIES
-    function _displayPlayerNames() {
+    function _displayPlayerNames() { // Displays player names on menu board
         if (x.checked) {
             p1name.textContent = playerName.value;
             p2name.textContent = 'The Computer';
@@ -156,7 +156,7 @@ const AI = (function () { // AI Module
         }
     }
 
-    function _startGame() {
+    function _startGame() { // Start PVE game
         _displayPlayerNames();
         gameStartPVE.classList.remove('show');
         if (o.checked) {
@@ -165,7 +165,7 @@ const AI = (function () { // AI Module
         cells.forEach(cell => cell.addEventListener('click', makeMove));
     }
 
-    function makeMove(e) {
+    function makeMove(e) { // Updates gameboard array for PVE
         const index = e.target.dataset.cellIndex;
         if (Gameboard.gameboard[index]) {
             return;
@@ -180,7 +180,7 @@ const AI = (function () { // AI Module
         setTimeout(opponentMove, '1000');
     }
 
-    function opponentMove() {
+    function opponentMove() { // Makes random move for AI
         if (gameEnd.classList.contains('show')) return;
         let index = Math.floor(Math.random() * 9);
         while (Gameboard.gameboard[index]) {
@@ -194,7 +194,7 @@ const AI = (function () { // AI Module
         Gameboard.updateGameboard();
     }
 
-    function _refreshPage() {
+    function _refreshPage() { // Refreshes Page
         window.location.reload();
     }
 
