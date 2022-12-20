@@ -1,0 +1,28 @@
+{
+  "name": "odin-project-battleship",
+  "version": "1.0.0",
+  "description": "Battleship game. Practicing Testing using Jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "webpack --watch",
+    "watch-jest": "jest --watch",
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chance093/odin-project-battleship.git"
+  },
+  "author": "Chance Espinosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chance093/odin-project-battleship/issues"
+  },
+  "homepage": "https://github.com/Chance093/odin-project-battleship#readme",
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
