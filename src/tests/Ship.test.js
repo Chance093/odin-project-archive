@@ -1,4 +1,4 @@
-import {Ship, sum} from '../index';
+import {Ship} from '../Ship';
 
 test('calcShipCoords: Finds all coords for a1 and a4', () => {
     let ship = Ship('a1', 'a4');
