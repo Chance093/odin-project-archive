@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Chance093/odin-project-battleship#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "jest": "^29.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
