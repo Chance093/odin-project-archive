@@ -19,3 +19,17 @@ test('calcShipCoords: Finds all coords for e4 and h4', () => {
     let ship = Ship('e4', 'h4');
     expect(ship.shipCoords).toStrictEqual(['e4', 'f4', 'g4', 'h4']);
 });
+
+test('hit and checkIfSunk: Ship with 2 health hit 2 times', () => {
+    let ship = Ship('a1', 'a2');
+    ship.hit();
+    ship.hit();
+    expect(ship.getIsSunk()).toBe(true);
+});
+
+test('hit and checkIfSunk: Ship with 3 health hit 2 times', () => {
+    let ship = Ship('a1', 'a3');
+    ship.hit();
+    ship.hit();
+    expect(ship.getIsSunk()).toBe(false);
+})

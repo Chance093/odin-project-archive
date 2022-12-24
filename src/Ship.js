@@ -16,14 +16,15 @@ function Ship(c1, c2) {
             let ref = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9};
             for(let i = ref[x1]; i<= ref[x2]; i++){
                 shipCoords.push(`${String.fromCharCode(97 + i)}${y1}`)
-            }
-            
+            }  
         }
         return shipCoords;
     }
 
     function checkIfSunk() {
-        if(lives === 0) isSunk = true;
+        if(lives === 0) {
+            isSunk = true;
+        }
     }
 
     function hit() {
@@ -31,7 +32,12 @@ function Ship(c1, c2) {
         checkIfSunk();
     }
 
-    return {shipCoords, isSunk, hit}
+    function getIsSunk() {
+        return isSunk;
+    }
+
+    return {shipCoords, getIsSunk, hit}
 }
+
 
 export {Ship};
