@@ -10,10 +10,14 @@ function Gameboard() {
     }
 
     function checkGameOver() {
-        if (ships.every(ship => ship.isSunk === true)) isGameOver = true;
+        if (ships.every(ship => ship.getIsSunk() === true)) isGameOver = true;
     }
 
     function receiveAttack(coord) {
-        
+
     }
+
+    return {missedAttacks, receiveAttack}
 }
+
+export {Gameboard}
