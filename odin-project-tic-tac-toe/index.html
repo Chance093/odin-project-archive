@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div class="game-start modal-container show">
+        <div class="game-select modal">
+            <h1>Choose Your Gamemode:</h1>
+            <div class="buttons">
+                <button id="pvp">PVP</button>
+                <button id="pve">PVE</button>
+            </div>
+        </div>
+    </div>
+    <div class="game-start-pvp modal-container">
+        <div class="player-inputs modal">
+            <h1>Enter Player Names:</h1>
+            <input type="text" id="p1input" placeholder="Player 1 Name">
+            <input type="text" id="p2input" placeholder="Player 2 Name">
+            <div class="buttons">
+                <button class="back-start">Back</button>
+                <button class="play">Play</button>
+            </div>
+        </div>
+    </div>
+    <div class="game-start-pve modal-container">
+        <div class="pve-inputs modal">
+            <h1>Choose Your Move:</h1>
+            <div class="radio-buttons">
+                <input type="radio" id="X" name="xo">
+                <label for="X">X</label>
+                <input type="radio" id="O" name="xo">
+                <label for="O">O</label>
+            </div>
+            <input type="text" id="playerinput" placeholder="Player Name">
+            <div class="buttons">
+                <button class="back-pve">Back</button>
+                <button class="play-pve">Play</button>
+            </div>
+        </div>
+    </div>
+    <div class="game">
+        <div class="menu">
+            <h1>Tic-Tac-Toe</h1>
+            <p><span id="p1name"></span> - X</span></p>
+            <p>Vs.</p>
+            <p><span id="p2name"></span> - O</p>
+            <div class="buttons">
+                <button class="main-menu">Main Menu</button>
+                <button class="reset">Reset</button>
+            </div>
+        </div>
+        <div class="gameboard">
+            <div class="cell cell0" data-cell-index="0"></div>
+            <div class="cell cell1" data-cell-index="1"></div>
+            <div class="cell cell2" data-cell-index="2"></div>
+            <div class="cell cell3" data-cell-index="3"></div>
+            <div class="cell cell4" data-cell-index="4"></div>
+            <div class="cell cell5" data-cell-index="5"></div>
+            <div class="cell cell6" data-cell-index="6"></div>
+            <div class="cell cell7" data-cell-index="7"></div>
+            <div class="cell cell8" data-cell-index="8"></div>
+        </div>
+    </div>
+    <div class="game-end modal-container">
+        <div class="modal">
+            <p class="announcement"></p>
+            <div class="buttons">
+                <button class="back">Back</button>
+                <button class="reset2">Reset</button>
+            </div>
+            <button class="refresh">Main Menu</button>
+        </div>
+    </div>
+</body>
+
+</html>
