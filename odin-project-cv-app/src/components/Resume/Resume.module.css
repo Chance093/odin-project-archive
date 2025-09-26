@@ -1,0 +1,12 @@
+.resume {
+	min-height: 60rem;
+	width: 51rem;
+	border: 2px solid rgb(150, 150, 150);
+	margin-bottom: 3rem;
+	padding: 5rem;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	margin-top: 3rem;
+}
