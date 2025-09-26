@@ -1,0 +1,2 @@
+# odin-project-rock-paper-scissors
+This is a simple game of Rock Paper Scissors I built for The Odin Project. The project was separated into 2 parts. The first part was building the game through prompts and the console. This was to mainly build out the logic of how the game was going to work. The second part was building the UI for the project using DOM manipulation. I did not spend much time making it look super pretty, but the game works as it should.
