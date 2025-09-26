@@ -1,0 +1,78 @@
+.app {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(32, 36, 52);
+}
+
+.header {
+	background-color: rgb(89, 89, 89);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+	height: 20vh;
+	font-size: 1.4rem;
+	padding: 1rem;
+}
+
+.title {
+	font-size: 2rem;
+}
+
+.scores {
+	display: flex;
+	gap: 3rem;
+}
+
+.scores > h2 {
+	width: 10rem;
+}
+
+.cards {
+	display: grid;
+	flex: 1;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+	gap: 10px;
+	align-self: center;
+	padding: 2rem;
+}
+
+.card {
+	height: 150px;
+	width: 150px;
+	border: 3px solid black;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	background-color: white;
+}
+
+.card:hover {
+	font-weight: bold;
+}
+
+.gameWon {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	color: white;
+	font-size: 3rem;
+}
+
+.restartButton {
+	height: 4rem;
+	width: 12rem;
+	border-radius: 12px;
+	font-size: 2rem;
+	cursor: pointer;
+}
