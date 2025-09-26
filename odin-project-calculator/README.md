@@ -1,0 +1,2 @@
+# odin-project-calculator
+This is a calculator I built for the Odin Project and it's the biggest project I have built so far. I added more buttons than TOP asked because I kind of wanted to prove I could to myself. I am not super excited about the design, but design is not my strong suit. I am however proud of how the calculator is working for the most part. This is only v1 so you will find a few bugs that I will come back and fix at a later point. In the future, I would like to add a sidebar that logs all of the previous calculations you did.
