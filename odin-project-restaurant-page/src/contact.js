@@ -1,0 +1,60 @@
+import mapImg from './imgs/map.png'
+
+function generateContactPage() {
+    const content = document.querySelector('#content');
+    content.innerHTML = '';
+    const contactHead = document.createElement('div');
+    const contactInfo = document.createElement('div');
+    const form = document.createElement('form');
+    const contactInfoHead = document.createElement('h2');
+    const springMountain = document.createElement('p');
+    const rainbow = document.createElement('p');
+    const centennial = document.createElement('p');
+    const formHead = document.createElement('h2');
+    const groupDiv = document.createElement('div');
+    const firstName = document.createElement('input');
+    const lastName = document.createElement('input');
+    const email = document.createElement('input');
+    const subject = document.createElement('input');
+    const body = document.createElement('textarea');
+    const submit = document.createElement('button');
+    const map = new Image();
+    contactHead.classList.add('contact');
+    firstName.setAttribute('type', 'text');
+    firstName.setAttribute('placeholder', 'First Name');
+    lastName.setAttribute('type', 'text');
+    lastName.setAttribute('placeholder', 'Last Name');
+    email.setAttribute('type', 'email');
+    email.setAttribute('placeholder', 'Email');
+    subject.setAttribute('type', 'text');
+    subject.setAttribute('placeholder', 'Subject');
+    body.setAttribute('cols', '30');
+    body.setAttribute('rows', '10');
+    body.setAttribute('placeholder', 'Leave us a message...');
+    map.src = mapImg;
+    contactHead.textContent = 'Contact';
+    contactInfoHead.textContent = 'Contact Info:';
+    springMountain.textContent = 'Spring Mountain: 111-222-3333';
+    rainbow.textContent = 'Rainbow: 111-333-4444';
+    centennial.textContent = 'Centennial: 111-444-5555';
+    formHead.textContent = 'We Welcome Your Feedback!';
+    submit.textContent = 'Submit';
+    contactInfo.appendChild(contactInfoHead);
+    contactInfo.appendChild(springMountain);
+    contactInfo.appendChild(rainbow);
+    contactInfo.appendChild(centennial);
+    groupDiv.appendChild(firstName);
+    groupDiv.appendChild(lastName);
+    groupDiv.appendChild(email);
+    form.appendChild(formHead);
+    form.appendChild(groupDiv);
+    form.appendChild(subject);
+    form.appendChild(body);
+    form.appendChild(submit);
+    content.appendChild(contactHead);
+    content.appendChild(contactInfo);
+    content.appendChild(map);
+    content.appendChild(form);
+}
+
+export default generateContactPage;
