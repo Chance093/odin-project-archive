@@ -1,0 +1,167 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.mainheader,
+.footer {
+    background-color: #1f2937;
+    color: white;
+}
+
+
+/* HEADER SECTION */
+
+.mainheader {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7em;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    margin-bottom: 5em;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 7em;
+}
+
+.hero img {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.description {
+    width: 500px;
+}
+
+.description h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #f9faf8;
+    margin: 0;
+}
+
+.description p,
+li {
+    font-size: 18px;
+    color: #e5e7eb;
+}
+
+ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    background-color: #3882f6;
+    color: white;
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* CONTENT SECTION */
+.content {
+    text-align: center;
+    padding: 20px 50px;
+}
+
+.content h3 {
+    font-size: 36px;
+    color: #1f2937;
+}
+
+.content img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.img-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* QUOTE SECTION */
+.quote-section {
+    background-color: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+    padding: 3em 0;
+}
+
+.quote-section p {
+    font-style: italic;
+}
+
+.quote-section .author {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.quote-section .author span {
+    font-style: italic;
+}
+
+/* CTA SECTION */
+
+.cta-section {
+    display: flex;
+    justify-content: center;
+}
+
+.cta {
+    background-color: #3882f6;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 5em 0em;
+    padding: 3em 8em;
+    border-radius: 10px;
+    gap: 8em;
+}
+
+.cta div p,
+.cta div h3 {
+    margin: 0;
+}
+
+.cta div p {
+    margin-top: 10px;
+}
+
+.cta button {
+    border: 2px solid white;
+}
+
+/* FOOTER SECTION */
+.footer {
+    padding: 2em;
+    text-align: center;
+}
