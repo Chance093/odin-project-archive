@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <section class="left-section">
+        <h1 class="city-state"></h1>
+        <p class="current-date"></p>
+        <p class="current-temp"></p>
+        <img src="" alt="" class="current-weather">
+        <p class="current-min-max"></p>
+        <div class="current-other">
+            <div class="current-feels-like">
+                <img class="current-other-img feels-like-img" src="" alt="">
+                <p class="key">Feels Like</p>
+                <p class="value feels-like-value"></p>
+            </div>
+            <div class="current-humidity">
+                <img class="current-other-img humidity-img" src="" alt="">
+                <p class="key">Humidity</p>
+                <p class="value humidity-value"></p>
+            </div>
+            <div class="current-cor">
+                <img class="current-other-img cor-img" src="" alt="">
+                <p class="key">Chance of Rain</p>
+                <p class="value cor-value"></p>
+            </div>
+            <div class="current-wind">
+                <img class="current-other-img wind-img" src="" alt="">
+                <p class="key">Wind Speed</p>
+                <p class="value wind-value"></p>
+            </div>
+        </div>
+    </section>
+    <section class="right-section">
+        <div class="search-box">
+            <label for="search"><img src="" class="search-icon" alt=""></label>
+            <input type="text" id="search" placeholder="Search: City, State">
+        </div>
+        <ul class="forecast-five-day">
+            <li class="forecast-day">
+                <div class="forecast-date">
+                    <p class="month-day"></p>
+                    <p class="day-of-week"></p>
+                </div>
+                <img src="" alt="" class="forecast-weather">
+                <p class="forecast-max"></p>
+                <p class="forecast-min"></p>
+            </li>
+            <li class="forecast-day">
+                <div class="forecast-date">
+                    <p class="month-day"></p>
+                    <p class="day-of-week"></p>
+                </div>
+                <img src="" alt="" class="forecast-weather">
+                <p class="forecast-max"></p>
+                <p class="forecast-min"></p>
+            </li>
+            <li class="forecast-day">
+                <div class="forecast-date">
+                    <p class="month-day"></p>
+                    <p class="day-of-week"></p>
+                </div>
+                <img src="" alt="" class="forecast-weather">
+                <p class="forecast-max"></p>
+                <p class="forecast-min"></p>
+            </li>
+            <li class="forecast-day">
+                <div class="forecast-date">
+                    <p class="month-day"></p>
+                    <p class="day-of-week"></p>
+                </div>
+                <img src="" alt="" class="forecast-weather">
+                <p class="forecast-max"></p>
+                <p class="forecast-min"></p>
+            </li>
+            <li class="forecast-day">
+                <div class="forecast-date">
+                    <p class="month-day"></p>
+                    <p class="day-of-week"></p>
+                </div>
+                <img src="" alt="" class="forecast-weather">
+                <p class="forecast-max"></p>
+                <p class="forecast-min"></p>
+            </li>
+        </ul>
+    </section>
+</body>
+</html>
