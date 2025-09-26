@@ -1,0 +1,89 @@
+body {
+    box-sizing: border-box;
+    background-color: rgb(47, 36, 47);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+h1 {
+    margin-bottom: 50px;
+    color: rgb(207, 184, 54);
+}
+
+.content {
+    display: flex;
+    gap: 3em;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.draw {
+    text-align: center;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.rowDiv {
+    display: flex;
+}
+
+.start {
+    background-color: white;
+    flex: 1;
+}
+
+div .red {
+    background-color: red;
+}
+
+div .orange {
+    background-color: orange;
+}
+
+div .yellow {
+    background-color: yellow;
+}
+
+div .green {
+    background-color: green;
+}
+
+div .blue {
+    background-color: blue;
+}
+
+div .indigo {
+    background-color: indigo;
+}
+
+div .violet {
+    background-color: violet;
+}
+
+button {
+    background-color: rgb(47, 36, 47);
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin: 10px;
+    padding: 10px 30px;
+    border: 3px solid white;
+    border-radius: 8px;
+}
